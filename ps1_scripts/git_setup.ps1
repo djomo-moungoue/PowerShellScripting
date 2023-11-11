@@ -8,3 +8,7 @@ Install-Module posh-git -Scope CurrentUser -Force
 
 Import-Module posh-git
 Add-PoshGitToProfile -AllHosts
+
+write-host "`nSetting the default global email and the name of the git user..." 
+git config --global user.email "djomo.moungoue@hotmail.com"
+git config --global user.name "djomo.moungoue"
