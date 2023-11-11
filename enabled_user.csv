@@ -1,0 +1,4 @@
+"Name","Enabled","Description"
+"admin","True","The local administrator of this laptop"
+"Gast","True","Vordefiniertes Konto f?r Gastzugriff auf den Computer bzw. die Dom?ne"
+"x","True",""
