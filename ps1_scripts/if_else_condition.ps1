@@ -1,5 +1,5 @@
-﻿# See all local users on your system
-Get-LocalUser
+﻿# Uncomment the following command to see all local users on your system
+# Get-LocalUser
 
 $UserName = 'user01' # Set this to a local user existing in your system
 # Get the local user object named $UserName
