@@ -131,30 +131,31 @@ Get-LocalUser | Get-Member
 
 If-elseif-else Condition Example
 ~~~ps1
-# See all local user on your system
+# See all local users on your system
 Get-LocalUser
 
-# Get the local user object named user01 - Replace user01 with a localuser existing in your system
-$User = Get-LocalUser -Name 'user01'
-$User
+$UserName = 'user01' # Set this to a local user existing in your system
+# Get the local user object named $UserName
+$UserObject = Get-LocalUser -Name $UserName
+$UserObject
 
 # Save his current status
-$IsEnabled = $User | Select-Object Enabled
+$IsEnabled = $UserObject | Select-Object Enabled
 
 'Is the user ' + $User + ' enabled ? ' + $IsEnabled.Enabled
 
 # Disable the user user01 if he is enabled
 if($IsEnabled.Enabled -eq $True){
-    $User | Disable-LocalUser
-    $User = Get-LocalUser -Name 'user01'
-    $IsEnabled = $User | Select-Object Enabled
-    'If Is the user ' + $User + ' enabled ? ' + $IsEnabled.Enabled
+    $UserObject | Disable-LocalUser
+    $UserObject = Get-LocalUser -Name $UserName
+    $IsEnabled = $UserObject | Select-Object Enabled
+    'If Is the user ' + $UserName + ' enabled ? ' + $IsEnabled.Enabled
 # Or enable it if it his disabled
 } else {
-    $User | Enable-LocalUser
-    $User = Get-LocalUser -Name 'user01'
-    $IsEnabled = $User | Select-Object Enabled
-    'Else Is the user ' + $User + ' enabled ? ' + $IsEnabled.Enabled
+    $UserObject | Enable-LocalUser
+    $UserObject = Get-LocalUser -Name $UserName
+    $IsEnabled = $UserObject | Select-Object Enabled
+    'Else Is the user ' + $UserName + ' enabled ? ' + $IsEnabled.Enabled
 }
 ~~~
 
