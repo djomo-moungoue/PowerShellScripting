@@ -57,7 +57,21 @@ git config --global user.name "git_user_name"
 
 More details about Git-setup in PowerShell [here](https://git-scm.com/book/de/v2/Anhang-A%3A-Git-in-anderen-Umgebungen-Git-in-PowerShell)
 
-### Some Tips and Tricks
+If you see the error massage after pushing your work to GitHub, don't worry 
+~~~ps1
++ git push
++ ~~~~~~~~
+    + CategoryInfo          : NotSpecified: (To https://gith...l_scripting.git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+~~~
+See a discussion about this essue [here](https://github.com/dahlbyk/posh-git/issues/109)
+
+If Git find a directory unsafe because the current user is not the owner, run this command if you known who owns that directory
+~~~ps1
+git config --global --add safe.directory C:/Users/admin/powershell_scripting
+~~~
+
+## Some Tips and Tricks
 A PowerShell (PS1) script is runned sequentially from the top to the buttom
 
 The naming convention of PowerShell scripts is CamelCase
@@ -66,7 +80,7 @@ Everything is an object in PowerShell.
 
 Always use the select-object to filter the properties before using the where-object to filger by value
 
-### Some commond used commands
+## Some commond used commands
 
 Run a script helloWorld.ps1 located in in the current directory
 ~~~ps1
