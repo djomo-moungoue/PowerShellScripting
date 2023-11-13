@@ -129,7 +129,7 @@ To see the class and all the members (methods and properties) of an object
 Get-LocalUser | Get-Member
 ~~~
 
-If-Else Condition Example
+If-elseif-else Condition Example
 ~~~ps1
 # See all local user on your system
 Get-LocalUser
