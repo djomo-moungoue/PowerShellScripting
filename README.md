@@ -115,3 +115,13 @@ To see the class and all the members (methods and properties) of an object
 Get-LocalUser | Get-Member
 ~~~
 
+## An Overview of PowerShell Commands with equivalent in Windows Batch/CMD or Linux/Mac Batch/Terminal
+|PowerShell Command|Windows Batch/CMD Command|Linux/Mac Batch/Terminal Command|PowerShell Alias|
+|---|---|---|---|
+|Clear-Host|clear|cls||
+|Get-ChildItem|dir|ls|gci, Get-Item *|
+|Gel-Help|help|man||
+|Get-Location||pwd|gl, Get-Item .|
+|New-Item -ItemType Directory|md|md, mkdir|ni|
+|New-Item -ItemType File|type nul >, echo nul >|touch, cat >, echo >|ni|
+
