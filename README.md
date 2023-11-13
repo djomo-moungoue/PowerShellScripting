@@ -80,7 +80,7 @@ Everything is an object in PowerShell.
 
 Always use the select-object to filter the properties before using the where-object to filger by value
 
-## Some commond used commands
+## Some common used commands
 
 Run a script helloWorld.ps1 located in in the current directory
 ~~~ps1
@@ -129,8 +129,37 @@ To see the class and all the members (methods and properties) of an object
 Get-LocalUser | Get-Member
 ~~~
 
+If-Else Condition Example
+~~~ps1
+# See all local user on your system
+Get-LocalUser
+
+# Get the local user object named user01 - Replace user01 with a localuser existing in your system
+$User = Get-LocalUser -Name 'user01'
+$User
+
+# Save his current status
+$IsEnabled = $User | Select-Object Enabled
+
+'Is the user ' + $User + ' enabled ? ' + $IsEnabled.Enabled
+
+# Disable the user user01 if he is enabled
+if($IsEnabled.Enabled -eq $True){
+    $User | Disable-LocalUser
+    $User = Get-LocalUser -Name 'user01'
+    $IsEnabled = $User | Select-Object Enabled
+    'If Is the user ' + $User + ' enabled ? ' + $IsEnabled.Enabled
+# Or enable it if it his disabled
+} else {
+    $User | Enable-LocalUser
+    $User = Get-LocalUser -Name 'user01'
+    $IsEnabled = $User | Select-Object Enabled
+    'Else Is the user ' + $User + ' enabled ? ' + $IsEnabled.Enabled
+}
+~~~
+
 ## An Overview of PowerShell Commands with equivalent in Windows Batch/CMD or Linux/Mac Batch/Terminal
-|PowerShell Command|Windows Batch/CMD Command|Linux/Mac Batch/Terminal Command|PowerShell Alias|
+|PowerShell Command|Windows Batch/CMD Command|Linux/Mac Bash/Terminal Command|PowerShell Alias|
 |---|---|---|---|
 |Clear-Host|clear|cls||
 |Get-ChildItem|dir|ls|gci, Get-Item *|
