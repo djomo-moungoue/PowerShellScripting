@@ -106,6 +106,9 @@ Write-Host 'Hello' $name
 [String]$var1 = 1
 [Int]$var2 = 1
 
+# Deletes a variable and its value from the scope in which it is defined, such as the current session
+Remove-Variable var1 # Deletes the $var1 variable.
+
 # Display the type of a variable
 $var1.getType() 
 $var2.getType()
@@ -139,23 +142,20 @@ $UserName = 'user01' # Set this to a local user existing in your system
 $UserObject = Get-LocalUser -Name $UserName
 $UserObject
 
-# Save his current status
-$IsEnabled = $UserObject | Select-Object Enabled
-
-'Is the user ' + $User + ' enabled ? ' + $IsEnabled.Enabled
+'Is the user ' + $UserName + ' enabled ? ' + $UserObject.Enabled
 
 # Disable the user user01 if he is enabled
-if($IsEnabled.Enabled -eq $True){
-    $UserObject | Disable-LocalUser
-    $UserObject = Get-LocalUser -Name $UserName
-    $IsEnabled = $UserObject | Select-Object Enabled
-    'If Is the user ' + $UserName + ' enabled ? ' + $IsEnabled.Enabled
+if($UserObject.Enabled -eq $True){
+    Disable-LocalUser -InputObject $UserObject
+    #Disable-LocalUser -Name $UserObject.Name # option 1
+    $UserObject = Get-LocalUser -Name $UserObject.Name # option 2
+    'If Is the user ' + $UserName + ' enabled ? ' + $UserObject.Enabled
 # Or enable it if it his disabled
 } else {
-    $UserObject | Enable-LocalUser
-    $UserObject = Get-LocalUser -Name $UserName
-    $IsEnabled = $UserObject | Select-Object Enabled
-    'Else Is the user ' + $UserName + ' enabled ? ' + $IsEnabled.Enabled
+    Enable-LocalUser -InputObject $UserObject
+    #Enable-LocalUser -Name $UserObject.Name # option 1
+    $UserObject = Get-LocalUser -Name $UserObject.Name # option 2
+    'Else Is the user ' + $UserName + ' enabled ? ' + $UserObject.Enabled
 }
 ~~~
 
