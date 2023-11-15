@@ -168,7 +168,7 @@ if($UserObject.Enabled -eq $True){
 }
 ~~~
 
-## PowerShell Commands - Windows Batch Commands - Linux/Mac Bash/Shell Commands
+## PowerShell - Windows Batch - Linux/Mac Bash/Shell Commands
 Tis section describes common Windows PowerShell Commands with their equivalent Windows Batch Commands or Linux/Mac Bash/Shell Commands.
 
 Display the list of built-in aliases
