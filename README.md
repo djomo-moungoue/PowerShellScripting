@@ -1,7 +1,7 @@
 # PowerShell Scripting
-PoweShell scripts are used:
-- to automate repetitive tasks
-- to configure systems and automate administrative tasks
+Use PoweShell scripts:
+- to automate repetitive/administrative tasks
+- to configure systems
 - to build, test and deploy applications.
 
 ## PowerShell Environment Setting
