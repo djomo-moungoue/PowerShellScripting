@@ -197,19 +197,15 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Add-PSSnapIn|||asnp|
 |Clear-Content|||clc|
 |Clear-History|||clhy|
-|Clear-Host|||cls|
-|Clear-Host|||clear|
+|Clear-Host|||cls, clear|
 |Clear-Item|||cli|
 |Clear-ItemProperty|||clp|
 |Clear-Variable|||clv|
-|Compare-Object|||compare|
-|Compare-Object|||diff|
+|Compare-Object|||compare, diff|
 |Connect-PSSession|||cnsn|
 |ConvertFrom-String|||CFS|
 |Convert-Path|||cvpa|
-|Copy-Item|||copy|
-|Copy-Item|||cp|
-|Copy-Item|||cpi|
+|Copy-Item|||copy, cp, cpi|
 |Copy-ItemProperty|||cpp|
 |Disable-LocalUser|||dlu|
 |Disable-PSBreakpoint|||dbp|
@@ -221,26 +217,19 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Export-Alias|||epal|
 |Export-Csv|||epcsv|
 |Export-PSSession|||epsn|
-|ForEach-Object|||foreach|
-|ForEach-Object|||%|
+|ForEach-Object|||foreach, %|
 |Format-Custom|||fc|
 |Format-Hex|||fhx|
 |Format-List|||fl|
 |Format-Table|||ft|
 |Format-Wide|||fw|
 |Get-Alias|||gal|
-|Get-ChildItem|||gci|
-|Get-ChildItem|||ls|
-|Get-ChildItem|||dir|
+|Get-ChildItem|||gci, ls, dir|
 |Get-Clipboard|||gcb|
 |Get-Command|||gcm|
 |Get-ComputerInfo|||gin|
-|Get-Content|||type|
-|Get-Content|||cat|
-|Get-Content|||gc|
-|Get-History|||ghy|
-|Get-History|||h|
-|Get-History|||history|
+|Get-Content|||type, cat, gc|
+|Get-History|||ghy, h, history|
 |Get-Item|||gi|
 |Get-ItemProperty|||gp|
 |Get-ItemPropertyValue|||gpv|
@@ -248,12 +237,10 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Get-LocalGroup|||glg|
 |Get-LocalGroupMember|||glgm|
 |Get-LocalUser|||glu|
-|Get-Location|||gl|
-|Get-Location|||pwd|
+|Get-Location|||gl, pwd|
 |Get-Member|||gm|
 |Get-Module|||gmo|
-|Get-Process|||ps|
-|Get-Process|||gps|
+|Get-Process|||ps, gps|
 |Get-PSBreakpoint|||gbp|
 |Get-PSCallStack|||gcs|
 |Get-PSDrive|||gdr|
@@ -272,27 +259,21 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Import-PSSession|||ipsn|
 |Invoke-Command|||icm|
 |Invoke-Expression|||iex|
-|Invoke-History|||ihy|
-|Invoke-History|||r|
+|Invoke-History|||ihy, r|
 |Invoke-Item|||ii|
 |Invoke-RestMethod|||irm|
-|Invoke-WebRequest|||curl|
-|Invoke-WebRequest|||wget|
-|Invoke-WebRequest|||iwr|
+|Invoke-WebRequest|||curl, wget, iwr|
 |Invoke-WMIMethod|||iwmi|
 |Measure-Object|||measure|
 |mkdir|||md|
-|Move-Item|||mi|
-|Move-Item|||move|
-|Move-Item|||mv|
+|Move-Item|||mi, move, mv|
 |Move-ItemProperty|||mp|
 |New-Alias|||nal|
 |New-Item|||ni|
 |New-LocalGroup|||nlg|
 |New-LocalUser|||nlu|
 |New-Module|||nmo|
-|New-PSDrive|||mount|
-|New-PSDrive|||ndr|
+|New-PSDrive|||mount, ndr|
 |New-PSSession|||nsn|
 |New-PSSessionConfigurationFile|||npssc|
 |New-Variable|||nv|
@@ -304,12 +285,7 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Push-Location|||pushd|
 |Receive-Job|||rcjb|
 |Receive-PSSession|||rcsn|
-|Remove-Item|||erase|
-|Remove-Item|||rmdir|
-|Remove-Item|||del|
-|Remove-Item|||rm|
-|Remove-Item|||rd|
-|Remove-Item|||ri|
+|Remove-Item|||erase, rmdir, del, rm, rd, ri|
 |Remove-ItemProperty|||rp|
 |Remove-Job|||rjb|
 |Remove-LocalGroup|||rlg|
@@ -322,8 +298,7 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Remove-PSSnapin|||rsnp|
 |Remove-Variable|||rv|
 |Remove-WMIObject|||rwmi|
-|Rename-Item|||rni|
-|Rename-Item|||ren|
+|Rename-Item|||rni, ren|
 |Rename-ItemProperty|||rnp|
 |Rename-LocalGroup|||rnlg|
 |Rename-LocalUser|||rnlu|
@@ -338,32 +313,26 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Set-ItemProperty|||sp|
 |Set-LocalGroup|||slg|
 |Set-LocalUser|||slu|
-|Set-Location|||sl|
-|Set-Location|||cd|
-|Set-Location|||chdir|
+|Set-Location|||sl, cd chdir|
 |Set-PSBreakpoint|||sbp|
 |Set-TimeZone|||stz|
-|Set-Variable|||sv|
-|Set-Variable|||set|
+|Set-Variable|||sv, set|
 |Set-WMIInstance|||swmi|
 |Show-Command|||shcm|
 |Sort-Object|||sort|
 |Start-Job|||sajb|
-|Start-Process|||saps|
-|Start-Process|||start|
+|Start-Process|||saps, start|
 |Start-Service|||sasv|
 |Start-Sleep|||sleep|
 |Stop-Job|||spjb|
-|Stop-Process|||kill|
-|Stop-Process|||spps|
+|Stop-Process|||kill, spps|
 |Stop-Service|||spsv|
 |Suspend-Job|||sujb|
 |Tee-Object|||tee|
 |Trace-Command|||trcm|
 |Wait-Job|||wjb|
-|Where-Object|||?|
-|Where-Object|||where|
-|Write-Output|||echo|
-|Write-Output|||write|
+|Where-Object|||?, where|
+|Write-Output|||echo, write|
+
 
 
