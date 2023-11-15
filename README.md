@@ -78,7 +78,7 @@ The naming convention of PowerShell scripts is CamelCase.
 
 Everything is an object in PowerShell.
 
-Always use the select-object to filter the properties before using the where-object to filger by value.
+Always use the `select-object` command to filter object properties before using the `where-object` command to filter property values.
 
 The comparison operators in PowerShell are case insensitive. Add a prefix `c` to make a case sensitive comparison.
 Example: -eq is a case insensitve equality. -ceq is a case sensitive equality
