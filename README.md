@@ -71,16 +71,25 @@ If Git find a directory unsafe because the current user is not the owner, run th
 git config --global --add safe.directory C:/Users/admin/powershell_scripting
 ~~~
 
-## Some Tips and Tricks
+## Important Notions
 A PowerShell (PS1) script is runned sequentially from the top to the buttom
 
-The naming convention of PowerShell scripts is CamelCase
+The naming convention of PowerShell scripts is CamelCase.
 
 Everything is an object in PowerShell.
 
-Always use the select-object to filter the properties before using the where-object to filger by value
+Always use the select-object to filter the properties before using the where-object to filger by value.
 
-## Some common used commands
+The comparison operators in PowerShell are case insensitive. Add a prefix `c` to make a case sensitive comparison.
+Example: -eq is a case insensitve equality. -ceq is a case sensitive equality
+- Equality operators: -eq, -ne, -gt, -ge, -lt, -le
+- Matching operators: -like, -notlike, -match, -notmacht
+- Replacement operator: -replace
+- Containement operators: -contains, -notcontains, -in, -notin
+- Type operators: -is, -isnot
+- Logical operators: -and, -or, -not
+
+## Common Commands
 
 Run a script helloWorld.ps1 located in in the current directory
 ~~~ps1
