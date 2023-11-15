@@ -181,14 +181,6 @@ $builtin_command_aliases = Get-Alias | Select-Object definition, name | Sort-Obj
 # Export the list a csv file in the current directory. Override the the file if it already exists.
 $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delimiter ';' -NoTypeInformation -Force
 ~~~
-|PowerShell Command|Windows Batch/CMD Command|Linux/Mac Bash/Terminal Command|Built-In Alias|
-|---|---|---|---|
-|Clear-Host|clear|cls||
-|Get-ChildItem|dir|ls|gci, Get-Item *|
-|Gel-Help|help|man||
-|Get-Location||pwd|gl, Get-Item .|
-|New-Item -ItemType Directory|md|md, mkdir|ni|
-|New-Item -ItemType File|type nul >, echo nul >|touch, cat >, echo >|ni|
 
 |PowerShell Command|Windows Batch/CMD Command|Linux/Mac Bash/Terminal Command|PowerShell Built-In Alias|
 |---|---|---|---|
@@ -197,15 +189,15 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Add-PSSnapIn|||asnp|
 |Clear-Content|||clc|
 |Clear-History|||clhy|
-|Clear-Host|||cls, clear|
+|Clear-Host|clear|cls|cls, clear|
 |Clear-Item|||cli|
 |Clear-ItemProperty|||clp|
 |Clear-Variable|||clv|
-|Compare-Object|||compare, diff|
+|Compare-Object||diff|compare, diff|
 |Connect-PSSession|||cnsn|
 |ConvertFrom-String|||CFS|
 |Convert-Path|||cvpa|
-|Copy-Item|||copy, cp, cpi|
+|Copy-Item|copy|cp|copy, cp, cpi|
 |Copy-ItemProperty|||cpp|
 |Disable-LocalUser|||dlu|
 |Disable-PSBreakpoint|||dbp|
@@ -224,12 +216,13 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Format-Table|||ft|
 |Format-Wide|||fw|
 |Get-Alias|||gal|
-|Get-ChildItem|||gci, ls, dir|
+|Get-ChildItem|dir|ls|gci, ls, dir|
 |Get-Clipboard|||gcb|
 |Get-Command|||gcm|
 |Get-ComputerInfo|||gin|
-|Get-Content|||type, cat, gc|
-|Get-History|||ghy, h, history|
+|Get-Content|type|cat|type, cat, gc|
+|Get-Help|help|man|help, man|
+|Get-History||history|ghy, h, history|
 |Get-Item|||gi|
 |Get-ItemProperty|||gp|
 |Get-ItemPropertyValue|||gpv|
@@ -237,10 +230,10 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Get-LocalGroup|||glg|
 |Get-LocalGroupMember|||glgm|
 |Get-LocalUser|||glu|
-|Get-Location|||gl, pwd|
+|Get-Location||pwd|gl, pwd|
 |Get-Member|||gm|
 |Get-Module|||gmo|
-|Get-Process|||ps, gps|
+|Get-Process||ps|ps, gps|
 |Get-PSBreakpoint|||gbp|
 |Get-PSCallStack|||gcs|
 |Get-PSDrive|||gdr|
@@ -252,7 +245,6 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Get-Variable|||gv|
 |Get-WmiObject|||gwmi|
 |Group-Object|||group|
-|help|||man|
 |Import-Alias|||ipal|
 |Import-Csv|||ipcsv|
 |Import-Module|||ipmo|
@@ -262,18 +254,20 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Invoke-History|||ihy, r|
 |Invoke-Item|||ii|
 |Invoke-RestMethod|||irm|
-|Invoke-WebRequest|||curl, wget, iwr|
+|Invoke-WebRequest||curl, wget|curl, wget, iwr|
 |Invoke-WMIMethod|||iwmi|
 |Measure-Object|||measure|
-|mkdir|||md|
+|mkdir||mkdir|md|
 |Move-Item|||mi, move, mv|
 |Move-ItemProperty|||mp|
 |New-Alias|||nal|
 |New-Item|||ni|
+|New-Item -ItemType Directory|md|md, mkdir|ni|
+|New-Item -ItemType File|type nul >, echo nul >|touch, cat >, echo >|ni|
 |New-LocalGroup|||nlg|
 |New-LocalUser|||nlu|
 |New-Module|||nmo|
-|New-PSDrive|||mount, ndr|
+|New-PSDrive||mount|mount, ndr|
 |New-PSSession|||nsn|
 |New-PSSessionConfigurationFile|||npssc|
 |New-Variable|||nv|
@@ -285,7 +279,7 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Push-Location|||pushd|
 |Receive-Job|||rcjb|
 |Receive-PSSession|||rcsn|
-|Remove-Item|||erase, rmdir, del, rm, rd, ri|
+|Remove-Item|del|rmdir, rm|erase, rmdir, del, rm, rd, ri|
 |Remove-ItemProperty|||rp|
 |Remove-Job|||rjb|
 |Remove-LocalGroup|||rlg|
@@ -313,7 +307,7 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Set-ItemProperty|||sp|
 |Set-LocalGroup|||slg|
 |Set-LocalUser|||slu|
-|Set-Location|||sl, cd chdir|
+|Set-Location||cd|sl, cd chdir|
 |Set-PSBreakpoint|||sbp|
 |Set-TimeZone|||stz|
 |Set-Variable|||sv, set|
@@ -325,14 +319,14 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Start-Service|||sasv|
 |Start-Sleep|||sleep|
 |Stop-Job|||spjb|
-|Stop-Process|||kill, spps|
+|Stop-Process||kill|kill, spps|
 |Stop-Service|||spsv|
 |Suspend-Job|||sujb|
 |Tee-Object|||tee|
 |Trace-Command|||trcm|
 |Wait-Job|||wjb|
 |Where-Object|||?, where|
-|Write-Output|||echo, write|
+|Write-Output|echo||echo, write|
 
 
 
