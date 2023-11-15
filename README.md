@@ -82,12 +82,12 @@ Always use the select-object to filter the properties before using the where-obj
 
 The comparison operators in PowerShell are case insensitive. Add a prefix `c` to make a case sensitive comparison.
 Example: -eq is a case insensitve equality. -ceq is a case sensitive equality
-- Equality operators: -eq, -ne, -gt, -ge, -lt, -le
-- Matching operators: -like, -notlike, -match, -notmacht
-- Replacement operator: -replace
-- Containement operators: -contains, -notcontains, -in, -notin
-- Type operators: -is, -isnot
-- Logical operators: -and, -or, -not
+- `Equality operators`: -eq, -ne, -gt, -ge, -lt, -le
+- `Matching operators`: -like, -notlike, -match, -notmacht
+- `Replacement operator`: -replace
+- `Containement operators`: -contains, -notcontains, -in, -notin
+- `Type operators`: -is, -isnot
+- `Logical operators`: -and, -or, -not
 
 ## Common Commands
 
