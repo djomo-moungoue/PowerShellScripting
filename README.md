@@ -168,7 +168,7 @@ if($UserObject.Enabled -eq $True){
 }
 ~~~
 
-## An Overview of PowerShell Commands with equivalent in Windows Batch/CMD or Linux/Mac Batch/Terminal
+## Common Windows PowerShell Commands with equivalent Windows Batch Commands or Linux/Mac Bash/Shell Commands
 Display the list of built-in aliases
 ~~~ps1
 Get-Alias
@@ -182,7 +182,7 @@ $builtin_command_aliases = Get-Alias | Select-Object definition, name | Sort-Obj
 $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delimiter ';' -NoTypeInformation -Force
 ~~~
 
-|PowerShell Command|Windows Batch/CMD Command|Linux/Mac Bash/Terminal Command|PowerShell Built-In Alias|
+|Windows PowerShell Command|Windows Batch Command|Linux/Mac Bash/Shell Command|PowerShell Built-In Alias|
 |---|---|---|---|
 |Add-Content|||ac|
 |Add-LocalGroupMember|||algm|
