@@ -176,7 +176,7 @@ Display the list of built-in aliases
 Get-Alias
 ~~~
 
-Export as list of command - alias association sorted alphabetically by command name
+Export a list of command - alias associations sorted alphabetically by the command definition
 ~~~ps1
 # Save the list in a variable
 $builtin_command_aliases = Get-Alias | Select-Object definition, name | Sort-Object -Property definition
