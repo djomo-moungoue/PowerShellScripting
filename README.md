@@ -89,6 +89,28 @@ Example: -eq is a case insensitve equality. -ceq is a case sensitive equality
 - `Type operators`: -is, -isnot
 - `Logical operators`: -and, -or, -not
 
+When you work with the Get-Date object, pay attention of the system settings if the system language and region is not English
+~~~ps1
+$UFormat = Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+"Current Date in UFormat: " + $UFormat
+$DayOfWeek1 = Get-Date -Format "dddd" # German
+"Current Day of Week (System Language DE) .NetFormat: "+$DayOfWeek1
+$DayOfWeek2 = Get-Date -UFormat "%A" # German
+"Current Day of Week (System Language DE) UFormat: "+$DayOfWeek2
+$CurrentDate = Get-Date # German
+$DayOfWeek = $CurrentDate.DayOfWeek # English
+"Current Day of Week: "+$DayOfWeek
+
+<#
+OUTPUT
+Current Date in .Net Format: Donnerstag 11.16.2023 07:57 +01:00
+Current Date in UFormat: Donnerstag 11/16/2023 08:00 +01
+Current Day of Week (System Language DE) .NetFormat: Donnerstag
+Current Day of Week (System Language DE) UFormat: Donnerstag
+Current Day of Week: Thursday
+#>
+~~~
+
 ## Common Commands
 
 Run a script helloWorld.ps1 located in in the current directory
