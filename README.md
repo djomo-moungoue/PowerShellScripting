@@ -111,6 +111,32 @@ Current Day of Week: Thursday
 #>
 ~~~
 
+Work with PowerShell Arrays
+~~~ps1
+# Declare the an empty rray
+$EmptyArray = @()
+'EmptyArray: '+$EmptyArray
+
+# Declare an non empty Array
+$NonEmptyArray = @('Zero')
+'NonEmptyArray: '+$NonEmptyArray
+
+$EmptyArray = $EmptyArray + 'First'
+$EmptyArray += 'Second'
+'EmptyArray after assignment: '+$EmptyArray
+
+$NonEmptyArray += 'Third'
+'NonEmptyArray after assignment: '+$NonEmptyArray
+
+<#
+OUTPUT
+EmptyArray: 
+NonEmptyArray: Zero
+EmptyArray after assignment: First Second
+NonEmptyArray after assignment: Zero Third
+#>
+~~~
+
 ## Common Commands
 
 Run a script helloWorld.ps1 located in in the current directory
@@ -197,32 +223,6 @@ if($UserObject.Enabled -eq $True){
     $UserObject = Get-LocalUser -Name $UserObject.Name # option 2
     'Else Is the user ' + $UserName + ' enabled ? ' + $UserObject.Enabled
 }
-~~~
-
-Work with PowerShell Arrays
-~~~ps1
-# Declare the an empty rray
-$EmptyArray = @()
-'EmptyArray: '+$EmptyArray
-
-# Declare an non empty Array
-$NonEmptyArray = @('Zero')
-'NonEmptyArray: '+$NonEmptyArray
-
-$EmptyArray = $EmptyArray + 'First'
-$EmptyArray += 'Second'
-'EmptyArray after assignment: '+$EmptyArray
-
-$NonEmptyArray += 'Third'
-'NonEmptyArray after assignment: '+$NonEmptyArray
-EmptyArray: 
-NonEmptyArray: Zero
-EmptyArray after assignment: First Second
-NonEmptyArray after assignment: Zero Third
-<#
-OUTPUT
-
-#>
 ~~~
 
 ## PowerShell - Windows Batch - Linux/Mac Bash/Shell Commands
