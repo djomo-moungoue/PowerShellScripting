@@ -199,6 +199,32 @@ if($UserObject.Enabled -eq $True){
 }
 ~~~
 
+Work with PowerShell Arrays
+~~~ps1
+# Declare the an empty rray
+$EmptyArray = @()
+'EmptyArray: '+$EmptyArray
+
+# Declare an non empty Array
+$NonEmptyArray = @('Zero')
+'NonEmptyArray: '+$NonEmptyArray
+
+$EmptyArray = $EmptyArray + 'First'
+$EmptyArray += 'Second'
+'EmptyArray after assignment: '+$EmptyArray
+
+$NonEmptyArray += 'Third'
+'NonEmptyArray after assignment: '+$NonEmptyArray
+EmptyArray: 
+NonEmptyArray: Zero
+EmptyArray after assignment: First Second
+NonEmptyArray after assignment: Zero Third
+<#
+OUTPUT
+
+#>
+~~~
+
 ## PowerShell - Windows Batch - Linux/Mac Bash/Shell Commands
 Tis section describes common Windows PowerShell Commands with their equivalent Windows Batch Commands or Linux/Mac Bash/Shell Commands.
 
@@ -215,7 +241,7 @@ $builtin_command_aliases = Get-Alias | Select-Object definition, name | Sort-Obj
 $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delimiter ';' -NoTypeInformation -Force
 ~~~
 
-|PowerShell Command|Batch Command|Bash/Shell Command|PowerShell Built-In Alias|Description|
+|PowerShell Command|Batch Command|Bash/Shell Command|PowerShell Built-In Alias|PowerShell Command Description|
 |---|---|---|---|---|
 |Add-Content|||ac||
 |Add-LocalGroupMember|||algm||

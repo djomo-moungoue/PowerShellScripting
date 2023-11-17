@@ -1,12 +1,14 @@
-﻿$RandNum = Get-Random -Minimum 1 -Maximum 5
-"Please guess the number: "
-[Int]$UserInput = Read-Host
+﻿# Declare the an empty rray
+$EmptyArray = @()
+'EmptyArray: '+$EmptyArray
 
-while($RandNum -ne $UserInput)
-{
-    "Sorry that guess is not correct, please guess again !"
-    "Please guess the number: "
-    [Int]$UserInput = Read-Host
-}
+# Declare an non empty Array
+$NonEmptyArray = @('Zero')
+'NonEmptyArray: '+$NonEmptyArray
 
-"YESSS, you guessed it, the number is "+$RandNum
+$EmptyArray = $EmptyArray + 'First'
+$EmptyArray += 'Second'
+'EmptyArray after assignment: '+$EmptyArray
+
+$NonEmptyArray += 'Third'
+'NonEmptyArray after assignment: '+$NonEmptyArray
