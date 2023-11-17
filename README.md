@@ -118,6 +118,15 @@ Run a script helloWorld.ps1 located in in the current directory
 C:\path\to\current\dir> .\helloWorld.ps1
 ~~~
 
+Open a file in PowerShell ISE from the PowerShell command line
+~~~ps1
+C:\path\to\current\dir> powershell_ise.exe .\helloWorld.ps1
+~~~
+Open a file with his default application from the PowerShell command line
+~~~ps1
+C:\path\to\current\dir> Invoke-Item .\helloWorld.ps1
+~~~
+
 Ways to output a message 'Hello World' to the screen
 ~~~ps1
 # Simplest way
@@ -206,151 +215,151 @@ $builtin_command_aliases = Get-Alias | Select-Object definition, name | Sort-Obj
 $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delimiter ';' -NoTypeInformation -Force
 ~~~
 
-|PowerShell Command|Batch Command|Bash/Shell Command|PowerShell Built-In Alias|
-|---|---|---|---|
-|Add-Content|||ac|
-|Add-LocalGroupMember|||algm|
-|Add-PSSnapIn|||asnp|
-|Clear-Content|||clc|
-|Clear-History|||clhy|
-|Clear-Host|clear|cls|cls, clear|
-|Clear-Item|||cli|
-|Clear-ItemProperty|||clp|
-|Clear-Variable|||clv|
-|Compare-Object||diff|compare, diff|
-|Connect-PSSession|||cnsn|
-|ConvertFrom-String|||CFS|
-|Convert-Path|||cvpa|
-|Copy-Item|copy|cp|copy, cp, cpi|
-|Copy-ItemProperty|||cpp|
-|Disable-LocalUser|||dlu|
-|Disable-PSBreakpoint|||dbp|
-|Disconnect-PSSession|||dnsn|
-|Enable-LocalUser|||elu|
-|Enable-PSBreakpoint|||ebp|
-|Enter-PSSession|||etsn|
-|Exit-PSSession|||exsn|
-|Export-Alias|||epal|
-|Export-Csv|||epcsv|
-|Export-PSSession|||epsn|
-|ForEach-Object|||foreach, %|
-|Format-Custom|||fc|
-|Format-Hex|||fhx|
-|Format-List|||fl|
-|Format-Table|||ft|
-|Format-Wide|||fw|
-|Get-Alias|||gal|
-|Get-ChildItem|dir|ls|gci, ls, dir|
-|Get-Clipboard|||gcb|
-|Get-Command|||gcm|
-|Get-ComputerInfo|||gin|
-|Get-Content|type|cat|type, cat, gc|
-|Get-Help|help|man|help, man|
-|Get-History||history|ghy, h, history|
-|Get-Item|||gi|
-|Get-ItemProperty|||gp|
-|Get-ItemPropertyValue|||gpv|
-|Get-Job|||gjb|
-|Get-LocalGroup|||glg|
-|Get-LocalGroupMember|||glgm|
-|Get-LocalUser|||glu|
-|Get-Location||pwd|gl, pwd|
-|Get-Member|||gm|
-|Get-Module|||gmo|
-|Get-Process||ps|ps, gps|
-|Get-PSBreakpoint|||gbp|
-|Get-PSCallStack|||gcs|
-|Get-PSDrive|||gdr|
-|Get-PSSession|||gsn|
-|Get-PSSnapIn|||gsnp|
-|Get-Service|||gsv|
-|Get-TimeZone|||gtz|
-|Get-Unique|||gu|
-|Get-Variable|||gv|
-|Get-WmiObject|||gwmi|
-|Group-Object|||group|
-|Import-Alias|||ipal|
-|Import-Csv|||ipcsv|
-|Import-Module|||ipmo|
-|Import-PSSession|||ipsn|
-|Invoke-Command|||icm|
-|Invoke-Expression|||iex|
-|Invoke-History|||ihy, r|
-|Invoke-Item|||ii|
-|Invoke-RestMethod|||irm|
-|Invoke-WebRequest||curl, wget|curl, wget, iwr|
-|Invoke-WMIMethod|||iwmi|
-|Measure-Object|||measure|
-|mkdir||mkdir|md|
-|Move-Item|||mi, move, mv|
-|Move-ItemProperty|||mp|
-|New-Alias|||nal|
-|New-Item|||ni|
-|New-Item -ItemType Directory|md|md, mkdir|ni|
-|New-Item -ItemType File|type nul >, echo nul >|touch, cat >, echo >|ni|
-|New-LocalGroup|||nlg|
-|New-LocalUser|||nlu|
-|New-Module|||nmo|
-|New-PSDrive||mount|mount, ndr|
-|New-PSSession|||nsn|
-|New-PSSessionConfigurationFile|||npssc|
-|New-Variable|||nv|
-|Out-GridView|||ogv|
-|Out-Host|||oh|
-|Out-Printer|||lp|
-|Pop-Location|||popd|
-|powershell_ise.exe|||ise|
-|Push-Location|||pushd|
-|Receive-Job|||rcjb|
-|Receive-PSSession|||rcsn|
-|Remove-Item|del|rmdir, rm|erase, rmdir, del, rm, rd, ri|
-|Remove-ItemProperty|||rp|
-|Remove-Job|||rjb|
-|Remove-LocalGroup|||rlg|
-|Remove-LocalGroupMember|||rlgm|
-|Remove-LocalUser|||rlu|
-|Remove-Module|||rmo|
-|Remove-PSBreakpoint|||rbp|
-|Remove-PSDrive|||rdr|
-|Remove-PSSession|||rsn|
-|Remove-PSSnapin|||rsnp|
-|Remove-Variable|||rv|
-|Remove-WMIObject|||rwmi|
-|Rename-Item|||rni, ren|
-|Rename-ItemProperty|||rnp|
-|Rename-LocalGroup|||rnlg|
-|Rename-LocalUser|||rnlu|
-|Resolve-Path|||rvpa|
-|Resume-Job|||rujb|
-|Select-Object|||select|
-|Select-String|||sls|
-|Set-Alias|||sal|
-|Set-Clipboard|||scb|
-|Set-Content|||sc|
-|Set-Item|||si|
-|Set-ItemProperty|||sp|
-|Set-LocalGroup|||slg|
-|Set-LocalUser|||slu|
-|Set-Location||cd|sl, cd chdir|
-|Set-PSBreakpoint|||sbp|
-|Set-TimeZone|||stz|
-|Set-Variable|||sv, set|
-|Set-WMIInstance|||swmi|
-|Show-Command|||shcm|
-|Sort-Object|||sort|
-|Start-Job|||sajb|
-|Start-Process|||saps, start|
-|Start-Service|||sasv|
-|Start-Sleep|||sleep|
-|Stop-Job|||spjb|
-|Stop-Process||kill|kill, spps|
-|Stop-Service|||spsv|
-|Suspend-Job|||sujb|
-|Tee-Object|||tee|
-|Trace-Command|||trcm|
-|Wait-Job|||wjb|
-|Where-Object|||?, where|
-|Write-Output|echo||echo, write|
+|PowerShell Command|Batch Command|Bash/Shell Command|PowerShell Built-In Alias|Description|
+|---|---|---|---|---|
+|Add-Content|||ac||
+|Add-LocalGroupMember|||algm||
+|Add-PSSnapIn|||asnp||
+|Clear-Content|||clc||
+|Clear-History|||clhy||
+|Clear-Host|clear|cls|cls, clear||
+|Clear-Item|||cli||
+|Clear-ItemProperty|||clp||
+|Clear-Variable|||clv||
+|Compare-Object||diff|compare, diff||
+|Connect-PSSession|||cnsn||
+|ConvertFrom-String|||CFS||
+|Convert-Path|||cvpa||
+|Copy-Item|copy|cp|copy, cp, cpi||
+|Copy-ItemProperty|||cpp||
+|Disable-LocalUser|||dlu||
+|Disable-PSBreakpoint|||dbp||
+|Disconnect-PSSession|||dnsn||
+|Enable-LocalUser|||elu||
+|Enable-PSBreakpoint|||ebp||
+|Enter-PSSession|||etsn||
+|Exit-PSSession|||exsn||
+|Export-Alias|||epal||
+|Export-Csv|||epcsv||
+|Export-PSSession|||epsn||
+|ForEach-Object|||foreach, %||
+|Format-Custom|||fc||
+|Format-Hex|||fhx||
+|Format-List|||fl||
+|Format-Table|||ft||
+|Format-Wide|||fw||
+|Get-Alias|||gal||
+|Get-ChildItem|dir|ls|gci, ls, dir||
+|Get-Clipboard|||gcb||
+|Get-Command|||gcm||
+|Get-ComputerInfo|||gin||
+|Get-Content|type|cat|type, cat, gc||
+|Get-Help|help|man|help, man||
+|Get-History||history|ghy, h, history||
+|Get-Item|||gi||
+|Get-ItemProperty|||gp||
+|Get-ItemPropertyValue|||gpv||
+|Get-Job|||gjb||
+|Get-LocalGroup|||glg||
+|Get-LocalGroupMember|||glgm||
+|Get-LocalUser|||glu||
+|Get-Location||pwd|gl, pwd||
+|Get-Member|||gm||
+|Get-Module|||gmo||
+|Get-Process||ps|ps, gps||
+|Get-PSBreakpoint|||gbp||
+|Get-PSCallStack|||gcs||
+|Get-PSDrive|||gdr||
+|Get-PSSession|||gsn||
+|Get-PSSnapIn|||gsnp||
+|Get-Service|||gsv||
+|Get-TimeZone|||gtz||
+|Get-Unique|||gu||
+|Get-Variable|||gv||
+|Get-WmiObject|||gwmi||
+|Group-Object|||group||
+|Import-Alias|||ipal||
+|Import-Csv|||ipcsv||
+|Import-Module|||ipmo||
+|Import-PSSession|||ipsn||
+|Invoke-Command|||icm||
+|Invoke-Expression|||iex||
+|Invoke-History|||ihy, r||
+|Invoke-Item|||ii|Performs the default action on the specified item.|
+|Invoke-RestMethod|||irm||
+|Invoke-WebRequest||curl, wget|curl, wget, iwr||
+|Invoke-WMIMethod|||iwmi||
+|Measure-Object|||measure||
+|mkdir||mkdir|md||
+|Move-Item|||mi, move, mv||
+|Move-ItemProperty|||mp||
+|New-Alias|||nal||
+|New-Item|||ni||
+|New-Item -ItemType Directory|md|md, mkdir|ni||
+|New-Item -ItemType File|type nul >, echo nul >|touch, cat >, echo >|ni||
+|New-LocalGroup|||nlg||
+|New-LocalUser|||nlu||
+|New-Module|||nmo||
+|New-PSDrive||mount|mount, ndr||
+|New-PSSession|||nsn||
+|New-PSSessionConfigurationFile|||npssc||
+|New-Variable|||nv||
+|Out-GridView|||ogv||
+|Out-Host|||oh||
+|Out-Printer|||lp||
+|Pop-Location|||popd||
+|powershell_ise.exe|||ise||
+|Push-Location|||pushd||
+|Receive-Job|||rcjb||
+|Receive-PSSession|||rcsn||
+|Remove-Item|del|rmdir, rm|erase, rmdir, del, rm, rd, ri||
+|Remove-ItemProperty|||rp||
+|Remove-Job|||rjb||
+|Remove-LocalGroup|||rlg||
+|Remove-LocalGroupMember|||rlgm||
+|Remove-LocalUser|||rlu||
+|Remove-Module|||rmo||
+|Remove-PSBreakpoint|||rbp||
+|Remove-PSDrive|||rdr||
+|Remove-PSSession|||rsn||
+|Remove-PSSnapin|||rsnp||
+|Remove-Variable|||rv||
+|Remove-WMIObject|||rwmi||
+|Rename-Item|||rni, ren|Renames an item in a PowerShell provider namespace.|
+|Rename-ItemProperty|||rnp||
+|Rename-LocalGroup|||rnlg||
+|Rename-LocalUser|||rnlu||
+|Resolve-Path|||rvpa||
+|Resume-Job|||rujb||
+|Select-Object|||select||
+|Select-String|||sls||
+|Set-Alias|||sal||
+|Set-Clipboard|||scb||
+|Set-Content|||sc||
+|Set-Item|||si||
+|Set-ItemProperty|||sp||
+|Set-LocalGroup|||slg||
+|Set-LocalUser|||slu||
+|Set-Location||cd|sl, cd chdir||
+|Set-PSBreakpoint|||sbp||
+|Set-TimeZone|||stz||
+|Set-Variable|||sv, set||
+|Set-WMIInstance|||swmi||
+|Show-Command|||shcm||
+|Sort-Object|||sort||
+|Start-Job|||sajb||
+|Start-Process|||saps, start||
+|Start-Service|||sasv||
+|Start-Sleep|||sleep||
+|Stop-Job|||spjb||
+|Stop-Process||kill|kill, spps||
+|Stop-Service|||spsv||
+|Suspend-Job|||sujb||
+|Tee-Object|||tee||
+|Trace-Command|||trcm||
+|Wait-Job|||wjb||
+|Where-Object|||?, where||
+|Write-Output|echo||echo, write||
 
 
 
