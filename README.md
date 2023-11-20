@@ -137,6 +137,64 @@ NonEmptyArray after assignment: Zero Third
 #>
 ~~~
 
+To concatenate Integer and String, enclose the integer into quotes
+~~~ps1
+$Array = @()
+$Array = $Array + 'First'
+$Array += 'Second'
+$Array += 'Third'
+
+[Int]$Count = 0
+
+foreach($Item in $Array)
+{
+    "$Count"+". "+$Item # Int enclosed in quotes
+    $Item+". "+$Count # Int not enclosed in quotes
+    $count +=1
+}
+<#OUTPUT
+0. First
+First. 0
+1. Second
+Second. 1
+2. Third
+Third. 2
+#>
+~~~
+
+A PowerShell Object is an Array of properties. Illustration
+~~~ps1
+$LocalUsers = Get-LocalUser
+$LocalUsers.getType()
+"First user: "
+$LocalUsers[0] | Format-Table
+"First user name: "+ $LocalUsers[0].Name
+"First user enabled? "+ $LocalUsers[0].Enabled
+"Last user: "
+$LocalUsers[-1] | Format-Table
+"Last user name: "+ $LocalUsers[-1].Name
+"Last user enabled? "+ $LocalUsers[-1].Enabled
+
+IsPublic IsSerial Name                                     BaseType                                                                                                                  
+-------- -------- ----                                     --------                                                                                                                  
+True     True     Object[]                                 System.Array                                                                                                              
+
+First user: 
+Name  Enabled Description    
+----  ------- -----------    
+admin True    Enabled account
+First user name: admin
+First user enabled? True
+
+Last user: 
+Name Enabled Description    
+---- ------- -----------    
+x    True    Enabled account
+Last user name: x
+Last user enabled? True
+#>
+~~~
+
 ## Common Commands
 
 Run a script helloWorld.ps1 located in in the current directory
