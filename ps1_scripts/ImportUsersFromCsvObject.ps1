@@ -1,15 +1,17 @@
 ﻿$UsersFromCsvObject = Import-csv -Path "C:\Users\admin\powershell_scripting\users.csv"
-$LocalUsers = Get-LocalUser | Select-Object Name
-$LocalUsers
+$UsersFromCsvObject.GetType()
+$UsersFromCsvObject | Format-Table
+
 foreach($User in $UsersFromCsvObject)
 {
-    if($User.LOGONNAME -notin $LocalUsers)
+    # Count the occurences of local users named $User.LOGONNAME
+    $Count = Get-LocalUser -Name $User.LOGONNAME | Measure-Object
+    $User.LOGONNAME 
+    $Count.Count
+    if($Count.Count -eq 0)
     {
-        $User.LOGONNAME
 
-        $SecureString = ConvertTo-SecureString -String $User.PASSWORDOFUSER -AsPlainText -Force
-        New-LocalUser -Name $User.LOGONNAME -Password $SecureString -Description $User.DESCRIPTION
+        $SecurePassword = ConvertTo-SecureString -String $User.PASSWORDOFUSER -AsPlainText -Force
+        New-LocalUser -Name $User.LOGONNAME -Password $SecurePassword -Description $User.DESCRIPTION
     }
 }
-Write-Host
-Get-LocalUser

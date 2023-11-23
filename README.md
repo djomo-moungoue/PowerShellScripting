@@ -75,8 +75,8 @@ git config --global --add safe.directory C:/Users/admin/powershell_scripting
 A PowerShell (PS1) script is runned sequentially from the top to the buttom
 
 The naming convention of PowerShell scripts is:
-- CamelCase for variables and methods. Ex: GetType()
-- Camel-Case for type names. Ex: Get-LocalUser
+- CamelCase for variables and methods. Ex: NewUsersFromCsv, GetType()
+- Camel-Case for type names. Ex: Get-LocalUser, Import-Csv
 
 Everything is an object in PowerShell.
 
@@ -103,8 +103,7 @@ $CurrentDate = Get-Date # German
 $DayOfWeek = $CurrentDate.DayOfWeek # English
 "Current Day of Week: "+$DayOfWeek
 
-<#
-OUTPUT
+<# OUTPUT
 Current Date in .Net Format: Donnerstag 11.16.2023 07:57 +01:00
 Current Date in UFormat: Donnerstag 11/16/2023 08:00 +01
 Current Day of Week (System Language DE) .NetFormat: Donnerstag
@@ -130,8 +129,7 @@ $EmptyArray += 'Second'
 $NonEmptyArray += 'Third'
 'NonEmptyArray after assignment: '+$NonEmptyArray
 
-<#
-OUTPUT
+<# OUTPUT
 EmptyArray: 
 NonEmptyArray: Zero
 EmptyArray after assignment: First Second
@@ -154,7 +152,7 @@ foreach($Item in $Array)
     $Item+". "+$Count # Int not enclosed in quotes
     $count +=1
 }
-<#OUTPUT
+<# OUTPUT
 0. First
 First. 0
 1. Second
@@ -214,6 +212,30 @@ user06    Pa55w.rd       Sales
 user07    Pa55w.rd       Support    
 user08    Pa55w.rd       Managers  
 #> 
+~~~
+
+The `Measure-Object` cmdlet performs calculations on the property values of objects. 
+- You can use `Measure-Object` to count objects or count objects with a specified Property . 
+- You can also use `Measure-Object` to calculate the Minimum , Maximum , Sum , StandardDeviation and Average of numeric values. 
+- For String objects, you can also use `Measure-Object` to count the number of lines, words, and characters.
+
+More about Measure-Object [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-object?view=powershell-7.4)
+
+Use Import-csv and Measure-Object to create new local users from a CSV file if they not exists.
+~~~ps1
+# Import the list of users to create as PowerShell object
+$UsersFromCsvObject = Import-csv -Path "C:\Users\admin\powershell_scripting\users.csv"
+
+foreach($User in $UsersFromCsvObject)
+{
+    # Count the occurences of local users named $User.LOGONNAME
+    $Count = Get-LocalUser -Name $User.LOGONNAME | Measure-Object
+    if($Count.Count -eq 0)
+    {
+        $SecurePassword = ConvertTo-SecureString -String $User.PASSWORDOFUSER -AsPlainText -Force
+        New-LocalUser -Name $User.LOGONNAME -Password $SecurePassword -Description $User.DESCRIPTION
+    }
+}
 ~~~
 
 ## Common Commands
