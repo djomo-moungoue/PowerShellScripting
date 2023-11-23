@@ -74,11 +74,13 @@ git config --global --add safe.directory C:/Users/admin/powershell_scripting
 ## Important Notions
 A PowerShell (PS1) script is runned sequentially from the top to the buttom
 
-The naming convention of PowerShell scripts is CamelCase.
+The naming convention of PowerShell scripts is:
+- CamelCase for variables and methods. Ex: GetType()
+- Camel-Case for type names. Ex: Get-LocalUser
 
 Everything is an object in PowerShell.
 
-Always use the `select-object` command to filter object properties before using the `where-object` command to filter property values.
+Always use the `Select-Object` command to filter object properties before using the `where-object` command to filter property values.
 
 The comparison operators in PowerShell are case insensitive. Add a prefix `c` to make a case sensitive comparison.
 Example: -eq is a case insensitve equality. -ceq is a case sensitive equality
@@ -193,6 +195,25 @@ x    True    Enabled account
 Last user name: x
 Last user enabled? True
 #>
+~~~
+
+The Import-Csv command enable you to have a object identical to a PowerShell Object.
+~~~ps1
+$UsersFromCsvObject = Import-csv -Path "C:\Users\admin\powershell_scripting\users.csv"
+$UsersFromCsvObject.GetType()
+$UsersFromCsvObject | Format-Table
+
+<# OUTPUT
+IsPublic IsSerial Name                                     BaseType                                                                                                                  
+-------- -------- ----                                     --------                                                                                                                  
+True     True     Object[]                                 System.Array 
+
+LOGONNAME PASSWORDOFUSER DESCRIPTION
+--------- -------------- -----------
+user06    Pa55w.rd       Sales      
+user07    Pa55w.rd       Support    
+user08    Pa55w.rd       Managers  
+#> 
 ~~~
 
 ## Common Commands
