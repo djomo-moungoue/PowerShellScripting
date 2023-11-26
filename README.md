@@ -51,8 +51,8 @@ Import-Module posh-git
 Add-PoshGitToProfile -AllHosts
 
 write-host "`nSetting the default global email and the name of the git user..." 
-git config --global user.email "git_user_email"
-git config --global user.name "git_user_name"
+git config --global user.email "GitUserEmail"
+git config --global user.name "GitUserName"
 ~~~
 
 More details about Git-setup in PowerShell [here](https://git-scm.com/book/de/v2/Anhang-A%3A-Git-in-anderen-Umgebungen-Git-in-PowerShell)
@@ -223,17 +223,35 @@ More about Measure-Object [here](https://learn.microsoft.com/en-us/powershell/mo
 
 Use Import-csv and Measure-Object to create new local users from a CSV file if they not exists.
 ~~~ps1
-# Import the list of users to create as PowerShell object
-$UsersFromCsvObject = Import-csv -Path "C:\Users\admin\powershell_scripting\users.csv"
+<#
+Create a PowerShell script which will import these users locally. 
+- Make sure that these users are able to login. 
+- Also make sure that the department header in the CSV file will be the description property of the new localuser.
+#>
+Clear-Host
 
-foreach($User in $UsersFromCsvObject)
+# Import the Csv file content as .Net object
+$NewPersonals = Import-Csv -Path "C:\Users\admin\powershell_scripting\new_personal.csv"
+$LocalUserNames = Get-LocalUser | Select-Object -ExpandProperty Name
+
+# Iterate through the list of users
+foreach($NewPersonal in $NewPersonals)
 {
-    # Count the occurences of local users named $User.LOGONNAME
-    $Count = Get-LocalUser -Name $User.LOGONNAME | Measure-Object
-    if($Count.Count -eq 0)
+    if($NewPersonal.LOGINNAME -notin $LocalUserNames)
     {
-        $SecurePassword = ConvertTo-SecureString -String $User.PASSWORDOFUSER -AsPlainText -Force
-        New-LocalUser -Name $User.LOGONNAME -Password $SecurePassword -Description $User.DESCRIPTION
+        # Secure the user password
+        $SecurePassword = ConvertTo-SecureString $NewPersonal.PASSWORD -AsPlainText -Force
+
+        # Create a local user account
+        $NewLocalUser = New-LocalUser -Name $NewPersonal.LOGINNAME -FullName $NewPersonal.NAME -Password $SecurePassword -Description $NewPersonal.DEPARTMENT
+
+        # Add the user account to a local group Users so that he will be able to login
+        Add-LocalGroupMember -Group "Benutzer" -Member $NewLocalUser.Name
+        # Display the Users
+        Get-LocalGroupMember -Group Benutzer
+
+        # Delete a local user
+        # Get-LocalUser | Where-Object {$_.Name -in ($NewLocalUser.Name)} | Remove-LocalUser
     }
 }
 ~~~
@@ -299,7 +317,14 @@ $username = Read-Host
 
 List all the commands installed on the computer, including cmdlets, aliases, functions, filters, scripts, and applications.
 ~~~ps1
+# All commands
 Get-Command
+
+# Commands conaining the verb "Get"
+Get-Command -Verb "Get*"
+
+# Commands containing the noun "User"
+Get-Command -Noun "*User*"
 ~~~
 
 To see the class and all the members (methods and properties) of an object
