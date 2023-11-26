@@ -375,6 +375,20 @@ $builtin_command_aliases = Get-Alias | Select-Object definition, name | Sort-Obj
 $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delimiter ';' -NoTypeInformation -Force
 ~~~
 
+Display the aliases of a cmdlet. 
+~~~ps1
+# Example of: Get-ChildItem
+Get-Alias -Definition Get-ChildItem
+
+<# OUTPUT
+CommandType     Name                                               Version    Source                                                                                                 
+-----------     ----                                               -------    ------                                                                                                 
+Alias           dir -> Get-ChildItem                                                                                                                                                 
+Alias           gci -> Get-ChildItem                                                                                                                                                 
+Alias           ls -> Get-ChildItem  
+#>
+~~~
+
 |PowerShell Command|Batch Command|Bash/Shell Command|PowerShell Built-In Alias|PowerShell Command Description|
 |---|---|---|---|---|
 |Add-Content|||ac||
@@ -412,7 +426,7 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Get-ChildItem|dir|ls|gci, ls, dir||
 |Get-Clipboard|||gcb||
 |Get-Command|||gcm||
-|Get-ComputerInfo|||gin||
+|Get-ComputerInfo|systeminfo||gin||
 |Get-Content|type|cat|type, cat, gc||
 |Get-Help|help|man|help, man||
 |Get-History||history|ghy, h, history||
@@ -528,5 +542,34 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 - https://learn.microsoft.com/en-us/powershell/scripting/discover-powershell?view=powershell-7.4
 - https://learn.microsoft.com/en-us/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4
 
+# Appendix
+
+# Setup your Environment to access Windows Active Directory and Remote Desktops using PowerShel scripts
+
+First make sure your Windows Version has these Hyper-V requirements enabled
+~~~ps1
+Get-ComputerInfo
+<# OUTPUT
+...
+HyperVisorPresent                                       : True
+HyperVRequirementDataExecutionPreventionAvailable       : True
+HyperVRequirementSecondLevelAddressTranslation          : True
+HyperVRequirementVirtualizationFirmwareEnabled          : True
+HyperVRequirementVMMonitorModeExtensions                : True
+#>
+~~~
+
+Enable Windows-Feature "Hyper-V" by looking up "Windows-Features on/off" via the Windows search field. NB: Your computer must be restarted so that the settings take effect.
+~~~ps1
+Get-ComputerInfo
+<# OUTPUT
+...
+HyperVisorPresent                                       : True
+HyperVRequirementDataExecutionPreventionAvailable       : 
+HyperVRequirementSecondLevelAddressTranslation          : 
+HyperVRequirementVirtualizationFirmwareEnabled          : 
+HyperVRequirementVMMonitorModeExtensions                : 
+#>
+~~~
 
 
