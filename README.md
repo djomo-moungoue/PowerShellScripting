@@ -238,6 +238,14 @@ foreach($User in $UsersFromCsvObject)
 }
 ~~~
 
+Get-Verb. Running this command returns a list of verbs that most commands adhere to. The response includes a description of what these verbs do. Since most commands follow this naming convention, it sets expectations on what a command does. This helps you select the appropriate command and what to name a command, should you be creating one.
+
+Get-Command. This command retrieves a list of all commands installed on your machine.
+
+Get-Member. It operates on object based output and is able to discover what object, properties and methods are available for a command.
+
+Get-Help. Invoking this command with the name of a command as an argument displays a help page describing various parts of a command.
+
 ## Common Commands
 
 Run a script helloWorld.ps1 located in in the current directory
@@ -487,6 +495,13 @@ $builtin_command_aliases | Export-Csv -Path .\builtin_command_aliases.csv -Delim
 |Wait-Job|||wjb||
 |Where-Object|||?, where||
 |Write-Output|echo||echo, write||
+
+## Useful resources
+- https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.4
+- https://learn.microsoft.com/en-us/shows/browse?terms=powershell
+- https://learn.microsoft.com/en-us/training/browse/?terms=PowerShell
+- https://learn.microsoft.com/en-us/powershell/scripting/discover-powershell?view=powershell-7.4
+- https://learn.microsoft.com/en-us/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4
 
 
 
