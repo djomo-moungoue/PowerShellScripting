@@ -535,16 +535,25 @@ Alias           ls -> Get-ChildItem
 |Where-Object|||?, where||
 |Write-Output|echo||echo, write||
 
-## Useful resources
-- https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.4
-- https://learn.microsoft.com/en-us/shows/browse?terms=powershell
-- https://learn.microsoft.com/en-us/training/browse/?terms=PowerShell
-- https://learn.microsoft.com/en-us/powershell/scripting/discover-powershell?view=powershell-7.4
-- https://learn.microsoft.com/en-us/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4
-
 # Appendix
 
-# Setup your Environment to access Windows Active Directory and Remote Desktops using PowerShel scripts
+## Useful Resources
+- [PowerShell from Beginner To Sheller And Scripter](https://www.udemy.com/course/powershell-from-beginner-to-sheller-and-scripter/)
+- [Overview of PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.4)
+- [PowerShell Bits tutorials](https://learn.microsoft.com/en-us/powershell/scripting/learn/tutorials/00-introduction)
+- [Microsoft Virtual Academy videos](https://learn.microsoft.com/en-us/shows/browse?terms=powershell)
+- [PowerShell Learn modules](https://learn.microsoft.com/en-us/training/browse/?terms=PowerShell)
+- [Course AZ-040T00--A: Automating Administration with PowerShell](https://learn.microsoft.com/en-us/training/courses/az-040t00)
+- [Migrating from Windows PowerShell 5.1 to PowerShell 7](https://learn.microsoft.com/en-us/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4)
+- [PowerShell remoting over SSH](https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core)
+- [Running Remote Commands](https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/running-remote-commands?view=powershell-7.4)
+- [Building a CI/CD pipeline with DSC](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/dsc-cicd)
+- [Managing Microsoft Exchange](https://learn.microsoft.com/en-us/powershell/exchange/exchange-management-shell)
+- [Azure Cloud Platform control from Windows PowerShell](https://learn.microsoft.com/en-us/powershell/azure/?view=azps-11.0.0)
+- [Google Cloud Platform (GCP) control from Windows PowerShell](https://cloud.google.com/powershell)
+- [AWS Cloud Platform control from Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html)
+
+## Setup your Environment to access Windows Active Directory and Remote Desktops using PowerShel scripts
 
 First make sure your Windows Version has these Hyper-V requirements enabled
 ~~~ps1
