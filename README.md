@@ -1,8 +1,12 @@
 # PowerShell Scripting
-Use PoweShell scripts:
-- to automate repetitive/administrative tasks
-- to configure systems
-- to build, test and deploy applications.
+Use PoweShell scripts to streamline workflows by:
+- automating repetitive/administrative activities
+- automating the build, test and deployment of your applications
+- automating the configuration of your on-premise servers/systems
+- automating the configuration of your Azure Cloud Platform
+- automating the configuration of your Google Cloud Platform
+- automating the configuration of your AWS Cloud Platform
+
 
 ## PowerShell Environment Setting
 
