@@ -8,7 +8,7 @@ Use PoweShell scripts to streamline workflows by:
 - automating the configuration of your AWS Cloud Platform
 
 
-## PowerShell Environment Setting
+## Set-Up PowerShell Environment
 
 Note: I recommend you the PowerShell ISE (Integrated Scripting Environment) to write your scripts because it is built-in editor of Windows 10, 11 and it contains many features such as code completion, git integration.
 These features will enhance your productivity. 
