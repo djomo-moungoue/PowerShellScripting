@@ -628,9 +628,9 @@ Connect it to the private network.
 
 Rename it to VLAN and Click `Apply` then `OK`
 
-#### Create the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT1
+#### Create the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER and CLIENT
 
-DOMAINCONTROLLER and MEMBER1
+DOMAINCONTROLLER and MEMBER
     - Name and Location: 
         - Name: DOMAINCONTROLLER 
         - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
@@ -644,33 +644,93 @@ DOMAINCONTROLLER and MEMBER1
     - Install the OS using the ISO image: ...\ISO\WindowsServer2022Evaluation180Days.iso
     - Finish
 
-CLIENT1
+CLIENT
     - Name and Location: 
-        - Name: CLIENT1 
+        - Name: CLIENT 
         - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
     - Specify Generation: (Default: Generation 1) 
     - Assign memory: Min 1024MB per VM. I could run only one VM at a time because only 1.88GB of free virtual memory is available in my computer
     - Connect the new VM to the VLAN
     - Connect the virtual hard disk
-        - Name: CLIENT1.vhdx
+        - Name: CLIENT.vhdx
         - Path: C:\ProgramData\Microsoft\Windows\Virtual Hard Disks\ (Default)
         - Size: 25GB (Depend on your needs and the free available disk on the physical computer
     - Install the OS using the ISO image: ...\ISO\Windows10Evaluation32Bits90Days.iso
     - Finish
 
-#### Install the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT1
+#### Install the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT
 DOMAINCONTROLLER and MEMBER1
 - During the installation make sure to choose the "Windows Server 2022 Standard Evaluation (Desktop Edition)" to install an OS having a GUI
 - Choose custom install
 - Username: Administrator (Default)
 - Password:
 
-CLIENT1
+CLIENT
 - I don't have Internet
 - Continue with limited setup
 - Username: Admin
 - 3 Security questions
 
 #### Post-Configure the VMs
+
+DOMAINCONTROLLER
+
+Open PowerShell ISE as Administrator to rename the computers
+~~~
+# Max length: 15 characters
+hostname
+WIN-04FKCHO4CEA
+Rename-Computer -NewName WINSERVER2022DC
+# OUTPUT
+# WARNING: The changes will take effect after you restart the computer WIN-04FKCHO4CEA.
+~~~
+
+Select `Network and Internet Settings`
+- Control Panel\Network and Internet\Network Connections
+- Ethernet \ Ethernet Properties
+- Select Internet Protocol Version 4 (TCP/IPv4)
+- Click on `Properties`
+- Select User the following IP address
+    - Ipv4 Address: 192.168.1.1
+    - IPv4 Mask: 255.255.255.0
+
+~~~ps1
+Restart-Computer
+~~~
+
+~~~ps1
+PS C:\Users\Administrator> hostname
+WINSERVER2022DC
+~~~
+
+MEMBER 
+~~~ps1
+hostname
+WIN-GNP9B8HV8NG
+PS C:\Users\Administrator> Rename-Computer -NewName WINSERVER2022M
+WARNING: The changes will take effect after you restart the computer WIN-GNP9B8HV8NG.
+~~~
+...
+- Ipv4 Address: 192.168.1.2
+- IPv4 Mask: 255.255.255.0
+
+~~~ps1
+Restart-Computer
+~~~
+
+CLIENT
+~~~ps1
+hostname
+DESKTOP-A35QJ7M
+PS C:\Windows\system32> Rename-Computer -NewName WINDOWS10C
+WARNING: The changes will take effect after you restart the computer DESKTOP-A35QJ7M.
+~~~
+...
+- Ipv4 Address: 192.168.1.3
+- IPv4 Mask: 255.255.255.0
+
+~~~ps1
+Restart-Computer
+~~~
 
 
