@@ -1,6 +1,6 @@
 ![PowerShell](Images/PowerShell.JPG)
 
-# PowerShell Scripting
+# Scripting
 Use PoweShell scripts to streamline workflows by:
 - automating repetitive/administrative activities
 - automating the build, test and deployment of your applications
