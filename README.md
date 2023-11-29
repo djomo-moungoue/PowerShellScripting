@@ -1,7 +1,7 @@
 ![PowerShell](Images/PowerShell.JPG)
 
 # Scripting
-Use PoweShell scripts to streamline workflows by:
+You can use PoweShell scripts to streamline workflows by:
 - automating repetitive/administrative activities
 - automating the build, test and deployment of your applications
 - automating the configuration of your on-premise servers/systems
@@ -617,11 +617,16 @@ Download Windows Server 2022 und Windows 10 Evaluation ISO (Expire in 180/90 day
 
 Create a Private Virtual Switch called VLAN
 
-Install the 3 Virtual Machines (DC1, MEMBER1,CLIENT1) 
+
 
 ![VLAN Architecture](Images/VLAN.JPG)
 
-
+Open Hyper-V-Manager
+- Create a private virtual switch that is isolated from everything else. Connect it to the private network. Rename it to VLAN and Click `Apply` then `OK`
+- Install the 3 Virtual Machines (DC1, MEMBER1,CLIENT1) 
+    - Name and Location: (Default location: C:\ProgramData\Microsoft\Windows\Hyper-V\)
+    - Specify Generation: (Default: Generation 1) 
+    - Assign memory: 512MB per VM because only 1.88GB of free virtual memory is available in my machine
 
 
 
