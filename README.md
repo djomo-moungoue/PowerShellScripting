@@ -617,7 +617,7 @@ Create a Private Virtual Switch called VLAN
 
 Install the 3 Virtual Machines (DC1, MEMBER1,CLIENT1) 
 
-![VLAN Architecture](VLAN.JPG)
+![VLAN Architecture](Images/VLAN.JPG)
 
 
 
