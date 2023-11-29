@@ -556,6 +556,8 @@ Alias           ls -> Get-ChildItem
 - [Azure Cloud Platform control from Windows PowerShell](https://learn.microsoft.com/en-us/powershell/azure/?view=azps-11.0.0)
 - [Google Cloud Platform (GCP) control from Windows PowerShell](https://cloud.google.com/powershell)
 - [AWS Cloud Platform control from Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html)
+- [Windows Server 2022 Evaluation ISO Download (expires in 180 days)](https://www.microsoft.com/de-de/evalcenter/download-windows-server-2022)
+- [Windows 10 Evaluation ISO Download (expires in 90 days)](https://www.microsoft.com/de-de/evalcenter/download-windows-10-enterprise)
 
 ## Setup your Environment to access Windows Active Directory and Remote Desktops using PowerShel scripts
 
@@ -578,7 +580,7 @@ OsFreePhysicalMemory                                    : 908004  (886.72MB)
 OsTotalVirtualMemorySize                                : 6294888 (6.00GB)
 OsFreeVirtualMemory                                     : 1975988 (1.88GB)
 ...
-HyperVisorPresent                                       : `False`
+HyperVisorPresent                                       : False
 HyperVRequirementDataExecutionPreventionAvailable       : True
 HyperVRequirementSecondLevelAddressTranslation          : True
 HyperVRequirementVirtualizationFirmwareEnabled          : True
@@ -596,7 +598,7 @@ Get-ComputerInfo
 
 <# OUTPUT
 ...
-HyperVisorPresent                                       : `True`
+HyperVisorPresent                                       : True
 HyperVRequirementDataExecutionPreventionAvailable       : 
 HyperVRequirementSecondLevelAddressTranslation          : 
 HyperVRequirementVirtualizationFirmwareEnabled          : 
@@ -607,7 +609,15 @@ The hypervisor is should now be present. HyperVisorPresent : `True`
 
 Type in Windows search field `Hyper-V-Manager` to start the Hyper-V Manager application.
 
+### Set-Up the Virtual Machines on the Hyper-V
 
+Download Windows Server 2022 und Windows 10 Evaluation ISO (Expire in 180/90 days)
+
+Create a Private Virtual Switch called VLAN
+
+Install the 3 Virtual Machines (DC1, MEMBER1,CLIENT1) 
+
+![VLAN Architecture]("C:\users\admin\PowerShellScripting\VLAN.JPG")
 
 
 
