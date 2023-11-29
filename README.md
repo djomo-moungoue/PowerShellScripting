@@ -631,32 +631,32 @@ Rename it to VLAN and Click `Apply` then `OK`
 #### Create the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER and CLIENT
 
 DOMAINCONTROLLER and MEMBER
-    - Name and Location: 
-        - Name: DOMAINCONTROLLER 
-        - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
-    - Specify Generation: (Default: Generation 1) 
-    - Assign memory: 512MB per VM because only 1.88GB of free virtual memory is available in my machine
-    - Connect the new VM to the VLAN
-    - Connect the virtual hard disk
-        - Name: DOMAINCONTROLLER.vhdx
-        - Path: C:\ProgramData\Microsoft\Windows\Virtual Hard Disks\ (Default)
-        - Size: 25GB (Depend on your needs and the free available disk on the physical computer
-    - Install the OS using the ISO image: ...\ISO\WindowsServer2022Evaluation180Days.iso
-    - Finish
+- Name and Location: 
+    - Name: DOMAINCONTROLLER 
+    - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
+- Specify Generation: (Default: Generation 1) 
+- Assign memory: 512MB per VM because only 1.88GB of free virtual memory is available in my machine
+- Connect the new VM to the VLAN
+- Connect the virtual hard disk
+    - Name: DOMAINCONTROLLER.vhdx
+    - Path: C:\ProgramData\Microsoft\Windows\Virtual Hard Disks\ (Default)
+    - Size: 25GB (Depend on your needs and the free available disk on the physical computer
+- Install the OS using the ISO image: ...\ISO\WindowsServer2022Evaluation180Days.iso
+- Finish
 
 CLIENT
-    - Name and Location: 
-        - Name: CLIENT 
-        - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
-    - Specify Generation: (Default: Generation 1) 
-    - Assign memory: Min 1024MB per VM. I could run only one VM at a time because only 1.88GB of free virtual memory is available in my computer
-    - Connect the new VM to the VLAN
-    - Connect the virtual hard disk
-        - Name: CLIENT.vhdx
-        - Path: C:\ProgramData\Microsoft\Windows\Virtual Hard Disks\ (Default)
-        - Size: 25GB (Depend on your needs and the free available disk on the physical computer
-    - Install the OS using the ISO image: ...\ISO\Windows10Evaluation32Bits90Days.iso
-    - Finish
+- Name and Location: 
+    - Name: CLIENT 
+    - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
+- Specify Generation: (Default: Generation 1) 
+- Assign memory: Min 1024MB per VM. I could run only one VM at a time because only 1.88GB of free virtual memory is available in my computer
+- Connect the new VM to the VLAN
+- Connect the virtual hard disk
+    - Name: CLIENT.vhdx
+    - Path: C:\ProgramData\Microsoft\Windows\Virtual Hard Disks\ (Default)
+    - Size: 25GB (Depend on your needs and the free available disk on the physical computer
+- Install the OS using the ISO image: ...\ISO\Windows10Evaluation32Bits90Days.iso
+- Finish
 
 #### Install the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT
 DOMAINCONTROLLER and MEMBER1
