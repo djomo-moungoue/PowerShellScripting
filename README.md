@@ -72,7 +72,7 @@ See a discussion about this essue [here](https://github.com/dahlbyk/posh-git/iss
 
 If Git find a directory unsafe because the current user is not the owner, run this command if you known who owns that directory
 ~~~ps1
-git config --global --add safe.directory C:/Users/admin/powershell_scripting
+git config --global --add safe.directory ${env:USERPROFILE}\PowerShellScripting
 ~~~
 
 ## Important Notions
@@ -201,7 +201,7 @@ Last user enabled? True
 
 The Import-Csv command enable you to have a object identical to a PowerShell Object.
 ~~~ps1
-$UsersFromCsvObject = Import-csv -Path "C:\Users\admin\powershell_scripting\users.csv"
+$UsersFromCsvObject = Import-csv -Path "${env:USERPROFILE}\PowerShellScripting\users.csv"
 $UsersFromCsvObject.GetType()
 $UsersFromCsvObject | Format-Table
 
@@ -235,7 +235,7 @@ Create a PowerShell script which will import these users locally.
 Clear-Host
 
 # Import the Csv file content as .Net object
-$NewPersonals = Import-Csv -Path "C:\Users\admin\powershell_scripting\new_personal.csv"
+$NewPersonals = Import-Csv -Path "${env:USERPROFILE}\PowerShellScripting\new_personal.csv"
 $LocalUserNames = Get-LocalUser | Select-Object -ExpandProperty Name
 
 # Iterate through the list of users
@@ -559,30 +559,58 @@ Alias           ls -> Get-ChildItem
 
 ## Setup your Environment to access Windows Active Directory and Remote Desktops using PowerShel scripts
 
-First make sure your Windows Version has these Hyper-V requirements enabled
+### Install Hyper-V - Check Prerequisites
+
+First make sure your Windows OS has these Hyper-V requirements enabled. This should be the case on any Microsoft Windows x `Pro` edition. N.B.: Microsoft Windows x `Home` editions don't support the Hypervisor (Hyper-V).
+
+Prerequisites are:
+- OS Name
+- Memory Sizes availables
+- Hyper-V Presence
 ~~~ps1
 Get-ComputerInfo
+
 <# OUTPUT
+OsName                                                  : Microsoft Windows 10 Pro
 ...
-HyperVisorPresent                                       : True
+OsTotalVisibleMemorySize                                : 4066664 (3.87GB)
+OsFreePhysicalMemory                                    : 908004  (886.72MB)
+OsTotalVirtualMemorySize                                : 6294888 (6.00GB)
+OsFreeVirtualMemory                                     : 1975988 (1.88GB)
+...
+HyperVisorPresent                                       : `False`
 HyperVRequirementDataExecutionPreventionAvailable       : True
 HyperVRequirementSecondLevelAddressTranslation          : True
 HyperVRequirementVirtualizationFirmwareEnabled          : True
 HyperVRequirementVMMonitorModeExtensions                : True
 #>
 ~~~
+The Hypervisor is not present. HyperVisorPresent : `False`
 
-Enable Windows-Feature "Hyper-V" by looking up "Windows-Features on/off" via the Windows search field. NB: Your computer must be restarted so that the settings take effect.
+Enable Windows-Feature "Hyper-V" by looking up "Turn Windows features on or off" via the Windows search field. 
+- Check the option `Hyper-V`
+- Click on `OK`
+- Click on `restart now` to restart/reboot your computer to apply the changes.
 ~~~ps1
 Get-ComputerInfo
+
 <# OUTPUT
 ...
-HyperVisorPresent                                       : True
+HyperVisorPresent                                       : `True`
 HyperVRequirementDataExecutionPreventionAvailable       : 
 HyperVRequirementSecondLevelAddressTranslation          : 
 HyperVRequirementVirtualizationFirmwareEnabled          : 
 HyperVRequirementVMMonitorModeExtensions                : 
 #>
 ~~~
+The hypervisor is should now be present. HyperVisorPresent : `True`
+
+Type in Windows search field `Hyper-V-Manager` to start the Hyper-V Manager application.
+
+
+
+
+
+
 
 
