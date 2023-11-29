@@ -678,10 +678,9 @@ DOMAINCONTROLLER
 Open PowerShell ISE as Administrator to rename the computers
 ~~~
 # Max length: 15 characters
-hostname
-WIN-04FKCHO4CEA
-Rename-Computer -NewName WINSERVER2022DC
-# OUTPUT
+PS C:\Users\Administrator> hostname
+# WIN-04FKCHO4CEA
+PS C:\Users\Administrator> Rename-Computer -NewName WINSERVER2022DC
 # WARNING: The changes will take effect after you restart the computer WIN-04FKCHO4CEA.
 ~~~
 
@@ -695,42 +694,42 @@ Select `Network and Internet Settings`
     - IPv4 Mask: 255.255.255.0
 
 ~~~ps1
-Restart-Computer
+PS C:\Users\Administrator> Restart-Computer
 ~~~
 
 ~~~ps1
 PS C:\Users\Administrator> hostname
-WINSERVER2022DC
+# WINSERVER2022DC
 ~~~
 
 MEMBER 
 ~~~ps1
-hostname
-WIN-GNP9B8HV8NG
+PS C:\Users\Administrator> hostname
+# WIN-GNP9B8HV8NG
 PS C:\Users\Administrator> Rename-Computer -NewName WINSERVER2022M
-WARNING: The changes will take effect after you restart the computer WIN-GNP9B8HV8NG.
+# WARNING: The changes will take effect after you restart the computer WIN-GNP9B8HV8NG.
 ~~~
 ...
 - Ipv4 Address: 192.168.1.2
 - IPv4 Mask: 255.255.255.0
 
 ~~~ps1
-Restart-Computer
+PS C:\Users\Administrator> Restart-Computer
 ~~~
 
 CLIENT
 ~~~ps1
 hostname
-DESKTOP-A35QJ7M
+# DESKTOP-A35QJ7M
 PS C:\Windows\system32> Rename-Computer -NewName WINDOWS10C
-WARNING: The changes will take effect after you restart the computer DESKTOP-A35QJ7M.
+# WARNING: The changes will take effect after you restart the computer DESKTOP-A35QJ7M.
 ~~~
 ...
 - Ipv4 Address: 192.168.1.3
 - IPv4 Mask: 255.255.255.0
 
 ~~~ps1
-Restart-Computer
+PS C:\Windows\system32> Restart-Computer
 ~~~
 
 
