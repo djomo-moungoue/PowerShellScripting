@@ -617,17 +617,45 @@ Download Windows Server 2022 und Windows 10 Evaluation ISO (Expire in 180/90 day
 
 Create a Private Virtual Switch called VLAN
 
-
-
 ![VLAN Architecture](Images/VLAN.JPG)
 
 Open Hyper-V-Manager
-- Create a private virtual switch that is isolated from everything else. Connect it to the private network. Rename it to VLAN and Click `Apply` then `OK`
-- Install the 3 Virtual Machines (DC1, MEMBER1,CLIENT1) 
-    - Name and Location: (Default location: C:\ProgramData\Microsoft\Windows\Hyper-V\)
+
+Create a private virtual switch that is isolated from everything else. Connect it to the private network. Rename it to VLAN and Click `Apply` then `OK`
+
+Create the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT1
+
+DOMAINCONTROLLER and MEMBER1
+    - Name and Location: 
+        - Name: DOMAINCONTROLLER 
+        - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
     - Specify Generation: (Default: Generation 1) 
     - Assign memory: 512MB per VM because only 1.88GB of free virtual memory is available in my machine
+    - Connect the new VM to the VLAN
+    - Connect the virtual hard disk
+        - Name: DOMAINCONTROLLER.vhdx
+        - Path: C:\ProgramData\Microsoft\Windows\Virtual Hard Disks\ (Default)
+        - Size: 25GB (Depend on your needs and the free available disk on the physical computer
+    - Install the OS using the ISO image: ...\ISO\WindowsServer2022Evaluation180Days.iso
+    - Finish
 
+CLIENT1
+    - Name and Location: 
+        - Name: CLIENT1 
+        - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
+    - Specify Generation: (Default: Generation 1) 
+    - Assign memory: 512MB per VM because only 1.88GB of free virtual memory is available in my machine
+    - Connect the new VM to the VLAN
+    - Connect the virtual hard disk
+        - Name: CLIENT1.vhdx
+        - Path: C:\ProgramData\Microsoft\Windows\Virtual Hard Disks\ (Default)
+        - Size: 25GB (Depend on your needs and the free available disk on the physical computer
+    - Install the OS using the ISO image: ...\ISO\Windows10Evaluation32Bits90Days.iso
+    - Finish
+
+Install the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT1
+- During the installation make sure to choose the "Windows Server 2022 Standard Evaluation (Desktop Edition)" to install an OS having a GUI
+- Choose custom install
 
 
 
