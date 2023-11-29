@@ -621,9 +621,14 @@ Create a Private Virtual Switch called VLAN
 
 Open Hyper-V-Manager
 
-Create a private virtual switch that is isolated from everything else. Connect it to the private network. Rename it to VLAN and Click `Apply` then `OK`
+#### Create a private virtual switch (VLAN)
+Create a private virtual switch that is isolated from everything else. 
 
-Create the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT1
+Connect it to the private network. 
+
+Rename it to VLAN and Click `Apply` then `OK`
+
+#### Create the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT1
 
 DOMAINCONTROLLER and MEMBER1
     - Name and Location: 
@@ -644,7 +649,7 @@ CLIENT1
         - Name: CLIENT1 
         - Path: C:\ProgramData\Microsoft\Windows\Hyper-V\ (Default)
     - Specify Generation: (Default: Generation 1) 
-    - Assign memory: 512MB per VM because only 1.88GB of free virtual memory is available in my machine
+    - Assign memory: Min 1024MB per VM. I could run only one VM at a time because only 1.88GB of free virtual memory is available in my computer
     - Connect the new VM to the VLAN
     - Connect the virtual hard disk
         - Name: CLIENT1.vhdx
@@ -653,9 +658,19 @@ CLIENT1
     - Install the OS using the ISO image: ...\ISO\Windows10Evaluation32Bits90Days.iso
     - Finish
 
-Install the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT1
+#### Install the 3 Virtual Machines: DOMAINCONTROLLER, MEMBER1 and CLIENT1
+DOMAINCONTROLLER and MEMBER1
 - During the installation make sure to choose the "Windows Server 2022 Standard Evaluation (Desktop Edition)" to install an OS having a GUI
 - Choose custom install
+- Username: Administrator (Default)
+- Password:
 
+CLIENT1
+- I don't have Internet
+- Continue with limited setup
+- Username: Admin
+- 3 Security questions
+
+#### Post-Configure the VMs
 
 
