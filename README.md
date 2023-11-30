@@ -781,6 +781,7 @@ On the member named WINSERVER2022M
     - Member of Domain: ROOT.LOCAL (Requirement: The domain controller must be reachable)
     - Computer Name/Domain Changes: administrator@root.local
 - Restart the computer
+- The domain controller (DC) administrator should be able lo login as: administrator (and his DC admin password)
 
 On the client named WINDOWS10C
 - Under Control Panel / Network and Internet / Network Connections, set the Preferred DNS Server to: 192.168.1.1
@@ -789,5 +790,7 @@ On the client named WINDOWS10C
     - Member of Domain: ROOT.LOCAL (Requirement: The domain controller must be reachable)
     - Computer Name/Domain Changes: administrator@root.local
 - Restart the computer
+- The domain controller administrator should be able lo login as: ROOT.LOCAL\administrator (and his DC admin password)
 
-After these stepps WINSERVER2022M and WINDOWS10C should appear in the list of the AD computers. The Domain controller administrator should be able to login to these computers using his domain admin credentials.
+After these stepps WINSERVER2022M and WINDOWS10C should appear in the list of the AD computers.
+![VLAN Architecture](Images/ADComputers.JPG)
