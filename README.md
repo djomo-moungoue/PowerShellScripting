@@ -561,7 +561,10 @@ Alias           ls -> Get-ChildItem
 - [Windows Server 2022 Evaluation ISO Download (expires in 180 days)](https://www.microsoft.com/de-de/evalcenter/download-windows-server-2022)
 - [Windows 10 Evaluation ISO Download (expires in 90 days)](https://www.microsoft.com/de-de/evalcenter/download-windows-10-enterprise)
 
-## Setup your Environment to access Windows Active Directory and Remote Desktops using PowerShel scripts
+## Setup your Environment to access Windows Active Directory and Remote Desktops using PowerShel 
+
+Hyper-V provides the services that you can use to create and manage virtual machines and their ressources. Each virtual machine is a virtualized computer system that operates in an isolated execution environment. 
+This allows you to run multiple operating systems simultaneously.
 
 ### Install Hyper-V - Check Prerequisites
 
@@ -732,4 +735,30 @@ PS C:\Windows\system32> Rename-Computer -NewName WINDOWS10C
 PS C:\Windows\system32> Restart-Computer
 ~~~
 
+#### Install and Configure Active Directory
+`Active Directory Domain Services (AD DS)` stores informations about users, computers, and other devices on the network. AD DS helps administratros securely manage this information and facilitates resource sharing and collaboration between users.
+- To help ensure that users can still log on to the network in the case of a server outage, install a minimum of two domain controllers for a domain.
+- AD DS requires a DNS server to be installed on the network.
 
+Open Server Manager
+- Select "Add roles and features" to determin which roles, role services, or features to install on the computing needs of your organization, such as sharing documents, or hosting a website.
+    - Requirements
+        - The Administrator account has a strong password
+        - Network settings, such as static IP addresses, are configured
+        - The most current security updates from Windows Update are installed
+- Select the option "Role-based or feature-based installation"
+- Select a server from the server pool
+- Select "Active "Directory Domain Services". 
+    - (AD DS) stores information about objects on thenetwork and makes this information available to users and network administrators. 
+    - AD DS uses domain controllers to give network users access to permitted resources anywhere on the network through a single logon process.
+- Features: conserve the default settings
+- Features that will be installed are:
+    - Active Directory Domain Services
+    - Group Policy Management
+    - Remote Server Administration Tools
+        - Role Administration Tools
+            - AD DS and AD LDS Tools
+                - Active Directory module for Windows PowerShell
+                - AD DS Tools
+                    - Active Dirctory Administrative Center
+                    - AD DS Snap-Ins and Command-Line Tools
