@@ -736,6 +736,9 @@ PS C:\Windows\system32> Restart-Computer
 ~~~
 
 #### Install and Configure Active Directory
+
+On the domain controller named WINSERVER2022DC
+
 `Active Directory Domain Services (AD DS)` stores informations about users, computers, and other devices on the network. AD DS helps administratros securely manage this information and facilitates resource sharing and collaboration between users.
 - To help ensure that users can still log on to the network in the case of a server outage, install a minimum of two domain controllers for a domain.
 - AD DS requires a DNS server to be installed on the network.
@@ -770,3 +773,21 @@ Open Server Manager
     - No worry about the warnings and click `install`
 
 You can open "Windows Administration Tools" in the start menu to administrate your active directory.
+
+On the member named WINSERVER2022M
+- Under Control Panel / Network and Internet / Network Connections, set the Preferred DNS Server to: 192.168.1.1
+- Under System and Security / Sysem / Advanced system settings / computer name, 
+    - Computer description: WINSERVER2022M
+    - Member of Domain: ROOT.LOCAL (Requirement: The domain controller must be reachable)
+    - Computer Name/Domain Changes: administrator@root.local
+- Restart the computer
+
+On the client named WINDOWS10C
+- Under Control Panel / Network and Internet / Network Connections, set the Preferred DNS Server to: 192.168.1.1
+- Under System and Security / Sysem / Advanced system settings / computer name, 
+    - Computer description: WINDOWS10C
+    - Member of Domain: ROOT.LOCAL (Requirement: The domain controller must be reachable)
+    - Computer Name/Domain Changes: administrator@root.local
+- Restart the computer
+
+After these stepps WINSERVER2022M and WINDOWS10C should appear in the list of the AD computers. The Domain controller administrator should be able to login to these computers using his domain admin credentials.
