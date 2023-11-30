@@ -752,7 +752,7 @@ Open Server Manager
     - (AD DS) stores information about objects on thenetwork and makes this information available to users and network administrators. 
     - AD DS uses domain controllers to give network users access to permitted resources anywhere on the network through a single logon process.
 - Features: conserve the default settings
-- Features that will be installed are:
+- Features that will be installed are: (Select the option restart the computer)
     - Active Directory Domain Services
     - Group Policy Management
     - Remote Server Administration Tools
@@ -762,3 +762,11 @@ Open Server Manager
                 - AD DS Tools
                     - Active Dirctory Administrative Center
                     - AD DS Snap-Ins and Command-Line Tools
+- As Post-deployment Configuration, select "Promote this server to the domain controller"
+    - Select "Add a new forest", set the root domain name to: ROOT.LOCAL
+    - Domain Controller Options: Keep the default settings and enter your Administrator password
+    - Set the NetBIOS name to ROOT
+    - Keep the default location of the AD DS database, log files, and SYSVOL to C:Windows\NTDS, C:Windows\SYSVOL
+    - No worry about the warnings and click `install`
+
+You can open "Windows Administration Tools" in the start menu to administrate your active directory.
