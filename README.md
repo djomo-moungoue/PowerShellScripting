@@ -860,7 +860,7 @@ Add the user `nken` as new member of the AD group `Users` so that he can login t
 - The Add-ADGroupMember cmdlet adds one or more users, groups, service accounts, or computers as new members of an Active Directory group.
 - The Identity parameter specifies the Active Directory group that receives the new members. 
 - The Members parameter specifies the new members to add to a group. 
-- You can identify a group by its `distinguished name`, `GUID`, `security identifier`, or `Security Account Manager (SAM) account name`.
+- You can identify an AD user or group by its `distinguished name`, `GUID`, `security identifier`, or `Security Account Manager (SAM) account name`.
 ~~~ps1
 Add-ADGroupMember -Identity Users -Members nken
 ~~~
