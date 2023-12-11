@@ -794,3 +794,88 @@ On the client named WINDOWS10C
 
 After these stepps WINSERVER2022M and WINDOWS10C should appear in the list of the AD computers.
 ![VLAN Architecture](Images/ADComputers.JPG)
+
+#### Administrate AD Users
+
+Connect as administrator on the domain controller VM WINSERVER2022DC
+
+Display existing AD users
+~~~ps1
+Get-ADUser -Filter * | Select-Object DistinguishedName, Enabled, Name,  ObjectClass, SamAccountName, ObjectGUID | Format-Table
+
+<# OUTPUT
+DistinguishedName                          Enabled Name          ObjectClass SamAccountName ObjectGUID
+-----------------                          ------- ----          ----------- -------------- ----------
+CN=Administrator,CN=Users,DC=ROOT,DC=LOCAL    True Administrator user        Administrator  574349ff-1daa-4843-93eb-4eec8d7a952f
+CN=Guest,CN=Users,DC=ROOT,DC=LOCAL           False Guest         user        Guest          ec3d5cf1-bab2-43bf-a8b1-6dbbf768ae3b
+CN=krbtgt,CN=Users,DC=ROOT,DC=LOCAL          False krbtgt        user        krbtgt         84e70b57-019a-47d3-a664-c7ec0325820b
+#>
+~~~
+
+Create a new AD user
+~~~ps1
+$splat = @{
+    Name = 'nken'
+    DisplayName = "Nken-Ngénmbhi"
+    Company = "Ngénmbhi"
+    AccountPassword = (Read-Host -AsSecureString 'AccountPassword')
+    Enabled = $true
+}
+New-ADUser @splat
+~~~
+
+Delete a user account
+~~~ps1
+Remove-ADUser -Identity "CN=nken,CN=Users,DC=ROOT,DC=LOCAL"
+~~~
+
+~~~ps1
+Get-ADUser -Filter * | Select-Object DistinguishedName, Enabled, Name,  ObjectClass, SamAccountName, ObjectGUID | Format-Table
+
+<# OUTPUT
+DistinguishedName                          Enabled Name          ObjectClass SamAccountName ObjectGUID
+-----------------                          ------- ----          ----------- -------------- ----------
+CN=Administrator,CN=Users,DC=ROOT,DC=LOCAL    True Administrator user        Administrator  574349ff-1daa-4843-93eb-4eec8d7a952f
+CN=Guest,CN=Users,DC=ROOT,DC=LOCAL           False Guest         user        Guest          ec3d5cf1-bab2-43bf-a8b1-6dbbf768ae3b
+CN=krbtgt,CN=Users,DC=ROOT,DC=LOCAL          False krbtgt        user        krbtgt         84e70b57-019a-47d3-a664-c7ec0325820b
+CN=nken,CN=Users,DC=ROOT,DC=LOCAL             True nken          user        nken           5e397270-951c-402a-b514-d0149e70257b
+#>
+~~~
+
+Display AD groups
+~~~ps1
+Get-ADGroup -Filter * | Select-Object DistinguishedName, GroupScope, Name, ObjectClass | Format-Table
+
+<# OUTPUT
+DistinguishedName                                                     GroupScope Name                                    ObjectClass
+-----------------                                                     ---------- ----                                    -----------
+CN=Administrators,CN=Builtin,DC=ROOT,DC=LOCAL                        DomainLocal Administrators                          group
+CN=Users,CN=Builtin,DC=ROOT,DC=LOCAL                                 DomainLocal Users                                   group
+CN=Guests,CN=Builtin,DC=ROOT,DC=LOCAL                                DomainLocal Guests                                  group
+...
+#>
+~~~
+
+Add the user `nken` as new member of the AD group `Users` so that he can login to the domain controller VM WINSERVER2022DC
+- The Add-ADGroupMember cmdlet adds one or more users, groups, service accounts, or computers as new members of an Active Directory group.
+- The Identity parameter specifies the Active Directory group that receives the new members. 
+- The Members parameter specifies the new members to add to a group. 
+- You can identify a group by its `distinguished name`, `GUID`, `security identifier`, or `Security Account Manager (SAM) account name`.
+~~~ps1
+Add-ADGroupMember -Identity Users -Members nken
+~~~
+This command adds the user account with the SamAccountName `nken` to the group `Users`.
+
+Display the members of the AD group `Users`
+~~~ps1
+Get-ADGroupMember -Identity Users | Select-Object distinguishedName, name, objectClass, SamAccountName | Format-Table
+
+<# OUTPUT
+distinguishedName                         name                objectClass SamAccountName
+-----------------                         ----                ----------- --------------
+CN=nken,CN=Users,DC=ROOT,DC=LOCAL         nken                user        nken
+CN=Domain Users,CN=Users,DC=ROOT,DC=LOCAL Domain Users        group       Domain Users
+                                          Authenticated Users             Authenticated Users
+                                          INTERACTIVE                     INTERACTIVE
+#>
+~~~
