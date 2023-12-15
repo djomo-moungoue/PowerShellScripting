@@ -795,9 +795,9 @@ On the client named WINDOWS10C
 After these stepps WINSERVER2022M and WINDOWS10C should appear in the list of the AD computers.
 ![VLAN Architecture](Images/ADComputers.JPG)
 
-#### Administrate AD Users
+#### Administrate Active Directory (AD) Users
 
-Connect as administrator on the domain controller VM WINSERVER2022DC
+Connect as `administrator` to the domain controller Virtual Machine `WINSERVER2022DC`
 
 Display existing AD users
 ~~~ps1
@@ -812,19 +812,23 @@ CN=krbtgt,CN=Users,DC=ROOT,DC=LOCAL          False krbtgt        user        krb
 #>
 ~~~
 
-Create a new AD user
+Create a new Active Directory user
+- The password of an AD user must be a SecureString
+- new created AD users musss have a password and must be explicitely enabled to be able to login 
 ~~~ps1
 $splat = @{
     Name = 'nken'
     DisplayName = "Nken-Ngénmbhi"
     Company = "Ngénmbhi"
-    AccountPassword = (Read-Host -AsSecureString 'AccountPassword')
+    AccountPassword = (Read-Host -AsSecureString 'Type an Account Password Please')
+    # AccountPassword = ConvertTo-SecureString -String 'Pa55w.rd' -AsPlainText -Force
     Enabled = $true
+    Description = "Head of Human Ressources at Ngénmbhi SA"
 }
 New-ADUser @splat
 ~~~
 
-Delete a user account
+Delete a Active Directory user account
 ~~~ps1
 Remove-ADUser -Identity "CN=nken,CN=Users,DC=ROOT,DC=LOCAL"
 ~~~
@@ -842,7 +846,26 @@ CN=nken,CN=Users,DC=ROOT,DC=LOCAL             True nken          user        nke
 #>
 ~~~
 
-Display AD groups
+Retrieve the new created user by its SamAccountName `nken`.  
+~~~ps1
+# Remark: More logical would have been: Get-ADUser -SamAccountName "nken"
+Get-ADUser -Identity "nken"
+
+<# OUTPUT
+DistinguishedName : CN=nken,CN=Users,DC=ROOT,DC=LOCAL
+Enabled           : True
+GivenName         :
+Name              : nken
+ObjectClass       : user
+ObjectGUID        : 5e397270-951c-402a-b514-d0149e70257b
+SamAccountName    : nken
+SID               : S-1-5-21-1547265000-980589578-3749382528-1106
+Surname           :
+UserPrincipalName :
+#>
+~~~
+
+Retrieve Active Directory groups
 ~~~ps1
 Get-ADGroup -Filter * | Select-Object DistinguishedName, GroupScope, Name, ObjectClass | Format-Table
 
@@ -866,7 +889,7 @@ Add-ADGroupMember -Identity Users -Members nken
 ~~~
 This command adds the user account with the SamAccountName `nken` to the group `Users`.
 
-Display the members of the AD group `Users`
+Display the members of the Active Directory group `Users`
 ~~~ps1
 Get-ADGroupMember -Identity Users | Select-Object distinguishedName, name, objectClass, SamAccountName | Format-Table
 
