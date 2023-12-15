@@ -1,4 +1,4 @@
-![PowerShell](Images/PowerShell.JPG)
+![PowerShell](multimedia/images/PowerShell.JPG)
 
 # Scripting
 You can use PoweShell scripts to streamline workflows by:
@@ -620,7 +620,7 @@ Download Windows Server 2022 und Windows 10 Evaluation ISO (Expire in 180/90 day
 
 Create a Private Virtual Switch called VLAN
 
-![VLAN Architecture](Images/VLAN.JPG)
+![VLAN Architecture](multimedia/images/VLAN.JPG)
 
 Open Hyper-V-Manager
 
@@ -793,7 +793,7 @@ On the client named WINDOWS10C
 - The domain controller administrator should be able lo login as: ROOT.LOCAL\administrator (and his DC admin password)
 
 After these stepps WINSERVER2022M and WINDOWS10C should appear in the list of the AD computers.
-![VLAN Architecture](Images/ADComputers.JPG)
+![VLAN Architecture](multimedia/images/ADComputers.JPG)
 
 #### Administrate Active Directory (AD) Users
 
@@ -1049,7 +1049,7 @@ Open the folder `Active Directory Users and Computers`
 
     Retrieve the new created user by its SamAccountName `testouaduser`.  
     ~~~ps1
-    CN
+    Get-ADUser -Identity "testouaduser" -Properties CanonicalName CN
     
     <# OUTPUT
     AccountExpirationDate                :
