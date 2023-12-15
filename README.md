@@ -1186,3 +1186,28 @@ ObjectClass       : user
 Enabled           : True
 #>
 ~~~
+
+Create an AD OU
+~~~ps1
+New-ADOrganizationalUnit -Name "OUMoved"
+~~~
+
+Retrieve the AD user "nken"
+~~~ps1
+Get-ADUser -Identity "nken" -Properties * | Select-Object DistinguishedName | Format-List
+
+# DistinguishedName : CN=nken,CN=Users,DC=ROOT,DC=LOCAL
+~~~
+
+Move the AD object "CN=nken,CN=Users,DC=ROOT,DC=LOCAL" from the group "Users" into the OU OUMoved
+~~~ps1
+Move-ADObject -Identity "CN=nken,CN=Users,DC=ROOT,DC=LOCAL" -TargetPath "OU=OUMoved,DC=ROOT,DC=LOCAL"
+~~~
+
+Retrieve the AD user "nken"
+~~~ps1
+Get-ADUser -Identity "nken" -Properties * | Select-Object DistinguishedName | Format-List
+
+#DistinguishedName : CN=nken,OU=OUMoved,DC=ROOT,DC=LOCAL
+~~~
+
