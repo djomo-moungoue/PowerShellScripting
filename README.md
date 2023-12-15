@@ -1211,3 +1211,47 @@ Get-ADUser -Identity "nken" -Properties * | Select-Object DistinguishedName | Fo
 #DistinguishedName : CN=nken,OU=OUMoved,DC=ROOT,DC=LOCAL
 ~~~
 
+#### Administrate Client Computers Remotely from the Domain Controler 
+
+Domain Controler Server: `WINSERVER2022DC`
+Remote Server: `WINSERVER2022M`
+
+The Enable-PSRemoting cmdlet configures the computer to receive PowerShell remote commands that are sent by using the WS-Management technology. 
+
+PowerShell remoting is enabled by default on Windows Server platforms. You can use Enable-PSRemoting to enable PowerShell remoting on other supported versions of Windows and to re-enable remoting if it becomes disabled.
+
+Execute a command on a remote Windows Server named `WINSERVER2022M` 
+~~~ps1
+Invoke-Command -ComputerName WINSERVER2022M -ScriptBlock {$env:COMPUTERNAME}
+<# OUTPUT
+WINSERVER2022M
+#>
+~~~
+
+Enable PS Remoting on a Windows Client
+~~~ps1
+Enable-PSRemoting
+
+<# OUTPUT
+WinRM has been updated to receive requests.
+The WinRM service type has been successfully changed.
+The WinRM service has been started.
+#>
+~~~
+
+Create a persistent connection to the remote Windows server named `WINSERVER2022M`
+~~~ps1
+Enter-PSSession WINSERVER2022M
+<#
+[WINSERVER2022M]: PS C:\Users\Administrator.ROOT\Documents> $env:COMPUTERNAME
+WINSERVER2022M
+#>
+~~~
+
+Exit the session and Create again
+~~~ps1
+[WINSERVER2022M]: PS C:\Users\Administrator.ROOT\Documents> Exit-PSSession
+PS C:\Users\Administrator> Enter-PSSession WINSERVER2022M.ROOT.LOCAL
+[WINSERVER2022M.ROOT.LOCAL]: PS C:\Users\Administrator.ROOT\Documents> $env:COMPUTERNAME
+WINSERVER2022M
+~~~
