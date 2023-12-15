@@ -1,4 +1,4 @@
-![PowerShell]("./images/PowerShell.JPG")
+![PowerShell](./images/PowerShell.JPG)
 
 
 # Scripting
@@ -621,7 +621,7 @@ Download Windows Server 2022 und Windows 10 Evaluation ISO (Expire in 180/90 day
 
 Create a Private Virtual Switch called VLAN
 
-![VLAN Architecture]("./images/VLAN.JPG")
+![VLAN Architecture](./images/VLAN.JPG)
 
 Open Hyper-V-Manager
 
@@ -794,7 +794,7 @@ On the client named WINDOWS10C
 - The domain controller administrator should be able lo login as: ROOT.LOCAL\administrator (and his DC admin password)
 
 After these stepps WINSERVER2022M and WINDOWS10C should appear in the list of the AD computers.
-![VLAN Architecture]("./images/ADComputers.JPG")
+![VLAN Architecture](./images/ADComputers.JPG)
 
 #### Administrate Active Directory (AD) Users
 
@@ -1030,7 +1030,7 @@ whenCreated                          : 15.12.2023 11:40:49
 ~~~
 
 A User member of the group `Users`
-![Test AD User]("./images/testaduser.JPG")
+![Test AD User](./images/testaduser.JPG)
 
 Open the folder `Active Directory Users and Computers`
 - Right click on the folder `Users`, click `refresh` to refresh the list and see the new user testaduser
@@ -1161,7 +1161,7 @@ Open the folder `Active Directory Users and Computers`
     ~~~
 
     A User member of the organizational unit `TestOU`
-    ![Test OU AD User]("./images/testouaduser.JPG")
+    ![Test OU AD User](./images/testouaduser.JPG)
 
 Set the UserPrincipalName
 ~~~ps1
