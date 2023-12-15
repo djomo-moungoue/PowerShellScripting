@@ -1,4 +1,4 @@
-![PowerShell](./multimedia/images/PowerShell.JPG)
+![PowerShell](./images/PowerShell.JPG)
 
 
 # Scripting
@@ -621,7 +621,7 @@ Download Windows Server 2022 und Windows 10 Evaluation ISO (Expire in 180/90 day
 
 Create a Private Virtual Switch called VLAN
 
-![VLAN Architecture](multimedia/images/VLAN.JPG)
+![VLAN Architecture](images/VLAN.JPG)
 
 Open Hyper-V-Manager
 
