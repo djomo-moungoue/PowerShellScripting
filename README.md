@@ -794,7 +794,7 @@ On the client named WINDOWS10C
 - The domain controller administrator should be able lo login as: ROOT.LOCAL\administrator (and his DC admin password)
 
 After these stepps WINSERVER2022M and WINDOWS10C should appear in the list of the AD computers.
-![VLAN Architecture](multimedia/images/ADComputers.JPG)
+![VLAN Architecture](multimedia.images/ADComputers.JPG)
 
 #### Administrate Active Directory (AD) Users
 
