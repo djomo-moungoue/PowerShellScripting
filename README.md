@@ -1,4 +1,4 @@
-![PowerShell](./multimedia/images/PowerShell.JPG "Title")
+![PowerShell](./multimedia/images/PowerShell.JPG)
 
 
 # Scripting
