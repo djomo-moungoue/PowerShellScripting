@@ -1163,3 +1163,26 @@ Open the folder `Active Directory Users and Computers`
     ![Test OU AD User][testouaduser.JPG]
 
 [testouaduser.JPG]: "multimedia/images/testouaduser.JPG"
+
+Set the UserPrincipalName
+~~~ps1
+Set-ADUser -Identity "testouaduser" -UserPrincipalName "testouaduser@root.local"
+ObjectGUID        : 29786684-af0b-4f38-b0db-e63a33de5cfa
+Get-ADUser -Identity "testouaduser" -Properties * | Select-Object SamAccountName, Name, CN, UserPrincipalName, DistinguishedName, CanonicalName, PrimaryGroup, ObjectGUID, SID, whenCreated, whenChanged, ObjectClass, Enabled | Format-List
+
+<# OUTPUT
+SamAccountName    : testouaduser
+Name              : testouaduser
+CN                : testouaduser
+UserPrincipalName : testouaduser@root.local
+DistinguishedName : CN=testouaduser,OU=TestOU,DC=ROOT,DC=LOCAL
+CanonicalName     : ROOT.LOCAL/TestOU/testouaduser
+PrimaryGroup      : CN=Domain Users,CN=Users,DC=ROOT,DC=LOCAL
+ObjectGUID        : 29786684-af0b-4f38-b0db-e63a33de5cfa
+SID               : S-1-5-21-1547265000-980589578-3749382528-1108
+whenCreated       : 15.12.2023 12:21:03
+whenChanged       : 15.12.2023 18:09:05
+ObjectClass       : user
+Enabled           : True
+#>
+~~~
