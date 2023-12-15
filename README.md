@@ -1211,7 +1211,7 @@ Get-ADUser -Identity "nken" -Properties * | Select-Object DistinguishedName | Fo
 #DistinguishedName : CN=nken,OU=OUMoved,DC=ROOT,DC=LOCAL
 ~~~
 
-#### Administrate Client Computers Remotely from the Domain Controler 
+#### Administrate remotely running Computer Clients or Servers located in the same Network
 
 Domain Controler Server: `WINSERVER2022DC`
 Remote Server: `WINSERVER2022M`
