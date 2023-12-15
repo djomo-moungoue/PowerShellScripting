@@ -1199,7 +1199,7 @@ Get-ADUser -Identity "nken" -Properties * | Select-Object DistinguishedName | Fo
 # DistinguishedName : CN=nken,CN=Users,DC=ROOT,DC=LOCAL
 ~~~
 
-Move the AD object "CN=nken,CN=Users,DC=ROOT,DC=LOCAL" from the group "Users" into the OU OUMoved
+Move the AD object "CN=nken,CN=Users,DC=ROOT,DC=LOCAL" from the default container for upgraded user accounts "Users" into the OU "OUMoved"
 ~~~ps1
 Move-ADObject -Identity "CN=nken,CN=Users,DC=ROOT,DC=LOCAL" -TargetPath "OU=OUMoved,DC=ROOT,DC=LOCAL"
 ~~~
