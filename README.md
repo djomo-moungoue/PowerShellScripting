@@ -902,3 +902,262 @@ CN=Domain Users,CN=Users,DC=ROOT,DC=LOCAL Domain Users        group       Domain
                                           INTERACTIVE                     INTERACTIVE
 #>
 ~~~
+
+Create a new Active Directory user
+- The password of an AD user must be a SecureString
+- new created AD users musss have a password and must be explicitely enabled to be able to login 
+~~~ps1
+$splat = @{
+    Name = 'testaduser'
+    DisplayName = "Test AD User"
+    AccountPassword = ConvertTo-SecureString -String 'Pa55w.rd' -AsPlainText -Force
+    Enabled = $true
+    Description = "Test AD User"
+}
+New-ADUser @splat
+~~~
+
+Retrieve the new created user by its SamAccountName `testaduser`.
+~~~ps1
+Get-ADUser -Identity "testaduser" - Properties *
+<# OUTPUT
+AccountExpirationDate                :
+accountExpires                       : 9223372036854775807
+AccountLockoutTime                   :
+AccountNotDelegated                  : False
+AllowReversiblePasswordEncryption    : False
+AuthenticationPolicy                 : {}
+AuthenticationPolicySilo             : {}
+BadLogonCount                        : 0
+badPasswordTime                      : 0
+badPwdCount                          : 0
+CannotChangePassword                 : False
+CanonicalName                        : ROOT.LOCAL/Users/testaduser
+Certificates                         : {}
+City                                 :
+CN                                   : testaduser
+codePage                             : 0
+Company                              :
+CompoundIdentitySupported            : {}
+Country                              :
+countryCode                          : 0
+Created                              : 15.12.2023 11:40:49
+createTimeStamp                      : 15.12.2023 11:40:49
+Deleted                              :
+Department                           :
+Description                          : Test AD User
+DisplayName                          : Test AD User
+DistinguishedName                    : CN=testaduser,CN=Users,DC=ROOT,DC=LOCAL
+Division                             :
+DoesNotRequirePreAuth                : False
+dSCorePropagationData                : {01.01.1601 01:00:00}
+EmailAddress                         :
+EmployeeID                           :
+EmployeeNumber                       :
+Enabled                              : True
+Fax                                  :
+GivenName                            :
+HomeDirectory                        :
+HomedirRequired                      : False
+HomeDrive                            :
+HomePage                             :
+HomePhone                            :
+Initials                             :
+instanceType                         : 4
+isDeleted                            :
+KerberosEncryptionType               : {}
+LastBadPasswordAttempt               :
+LastKnownParent                      :
+lastLogoff                           : 0
+lastLogon                            : 0
+LastLogonDate                        :
+LockedOut                            : False
+logonCount                           : 0
+LogonWorkstations                    :
+Manager                              :
+MemberOf                             : {}
+MNSLogonAccount                      : False
+MobilePhone                          :
+Modified                             : 15.12.2023 11:40:49
+modifyTimeStamp                      : 15.12.2023 11:40:49
+msDS-User-Account-Control-Computed   : 0
+Name                                 : testaduser
+nTSecurityDescriptor                 : System.DirectoryServices.ActiveDirectorySecurity
+ObjectCategory                       : CN=Person,CN=Schema,CN=Configuration,DC=ROOT,DC=LOCAL
+ObjectClass                          : user
+ObjectGUID                           : 7395cc50-2f4f-4b3e-aae5-d9cb46da4c69
+objectSid                            : S-1-5-21-1547265000-980589578-3749382528-1107
+Office                               :
+OfficePhone                          :
+Organization                         :
+OtherName                            :
+PasswordExpired                      : False
+PasswordLastSet                      : 15.12.2023 11:40:49
+PasswordNeverExpires                 : False
+PasswordNotRequired                  : False
+POBox                                :
+PostalCode                           :
+PrimaryGroup                         : CN=Domain Users,CN=Users,DC=ROOT,DC=LOCAL
+primaryGroupID                       : 513
+PrincipalsAllowedToDelegateToAccount : {}
+ProfilePath                          :
+ProtectedFromAccidentalDeletion      : False
+pwdLastSet                           : 133471104491514676
+SamAccountName                       : testaduser
+sAMAccountType                       : 805306368
+ScriptPath                           :
+sDRightsEffective                    : 15
+ServicePrincipalNames                : {}
+SID                                  : S-1-5-21-1547265000-980589578-3749382528-1107
+SIDHistory                           : {}
+SmartcardLogonRequired               : False
+State                                :
+StreetAddress                        :
+Surname                              :
+Title                                :
+TrustedForDelegation                 : False
+TrustedToAuthForDelegation           : False
+UseDESKeyOnly                        : False
+userAccountControl                   : 512
+userCertificate                      : {}
+UserPrincipalName                    :
+uSNChanged                           : 36898
+uSNCreated                           : 36894
+whenChanged                          : 15.12.2023 11:40:49
+whenCreated                          : 15.12.2023 11:40:49
+#>
+~~~
+
+A User member of the group `Users`
+![Test AD User]("multimedia/images/testaduser.JPG")
+
+Open the folder `Active Directory Users and Computers`
+- Right click on the folder `Users`, click `refresh` to refresh the list and see the new user testaduser
+- Right click on `ROOT.LOCAL` choose `New` then `Organizational Unit` to create an organizational unit named "TestOU"
+- Use the LDAP path `"OU=TestOU,DC=ROOT,DC=LOCAL"` to create a user in the organizational unit (OU) 
+    ~~~ps1
+    $splat = @{
+        Name = "testouaduser"
+        DisplayName = "Test OU AD User"
+        AccountPassword = ConvertTo-SecureString -String "Pa55w.rd" -AsPlainText -Force
+        Enabled = $true
+        Description = "Test OU AD User"
+        Path = "OU=TestOU,DC=ROOT,DC=LOCAL"
+    }
+    New-ADUser @splat
+    ~~~
+
+    Retrieve the new created user by its SamAccountName `testouaduser`.  
+    ~~~ps1
+    CN
+    
+    <# OUTPUT
+    AccountExpirationDate                :
+    accountExpires                       : 9223372036854775807
+    AccountLockoutTime                   :
+    AccountNotDelegated                  : False
+    AllowReversiblePasswordEncryption    : False
+    AuthenticationPolicy                 : {}
+    AuthenticationPolicySilo             : {}
+    BadLogonCount                        : 0
+    badPasswordTime                      : 0
+    badPwdCount                          : 0
+    CannotChangePassword                 : False
+    CanonicalName                        : ROOT.LOCAL/TestOU/testouaduser
+    Certificates                         : {}
+    City                                 :
+    CN                                   : testouaduser
+    codePage                             : 0
+    Company                              :
+    CompoundIdentitySupported            : {}
+    Country                              :
+    countryCode                          : 0
+    Created                              : 15.12.2023 12:21:03
+    createTimeStamp                      : 15.12.2023 12:21:03
+    Deleted                              :
+    Department                           :
+    Description                          : Test OU AD User
+    DisplayName                          : Test OU AD User
+    DistinguishedName                    : CN=testouaduser,OU=TestOU,DC=ROOT,DC=LOCAL
+    Division                             :
+    DoesNotRequirePreAuth                : False
+    dSCorePropagationData                : {01.01.1601 01:00:00}
+    EmailAddress                         :
+    EmployeeID                           :
+    EmployeeNumber                       :
+    Enabled                              : True
+    Fax                                  :
+    GivenName                            :
+    HomeDirectory                        :
+    HomedirRequired                      : False
+    HomeDrive                            :
+    HomePage                             :
+    HomePhone                            :
+    Initials                             :
+    instanceType                         : 4
+    isDeleted                            :
+    KerberosEncryptionType               : {}
+    LastBadPasswordAttempt               :
+    LastKnownParent                      :
+    lastLogoff                           : 0
+    lastLogon                            : 0
+    LastLogonDate                        :
+    LockedOut                            : False
+    logonCount                           : 0
+    LogonWorkstations                    :
+    Manager                              :
+    MemberOf                             : {}
+    MNSLogonAccount                      : False
+    MobilePhone                          :
+    Modified                             : 15.12.2023 12:21:03
+    modifyTimeStamp                      : 15.12.2023 12:21:03
+    msDS-User-Account-Control-Computed   : 0
+    Name                                 : testouaduser
+    nTSecurityDescriptor                 : System.DirectoryServices.ActiveDirectorySecurity
+    ObjectCategory                       : CN=Person,CN=Schema,CN=Configuration,DC=ROOT,DC=LOCAL
+    ObjectClass                          : user
+    ObjectGUID                           : 29786684-af0b-4f38-b0db-e63a33de5cfa
+    objectSid                            : S-1-5-21-1547265000-980589578-3749382528-1108
+    Office                               :
+    OfficePhone                          :
+    Organization                         :
+    OtherName                            :
+    PasswordExpired                      : False
+    PasswordLastSet                      : 15.12.2023 12:21:03
+    PasswordNeverExpires                 : False
+    PasswordNotRequired                  : False
+    POBox                                :
+    PostalCode                           :
+    PrimaryGroup                         : CN=Domain Users,CN=Users,DC=ROOT,DC=LOCAL
+    primaryGroupID                       : 513
+    PrincipalsAllowedToDelegateToAccount : {}
+    ProfilePath                          :
+    ProtectedFromAccidentalDeletion      : False
+    pwdLastSet                           : 133471128635183434
+    SamAccountName                       : testouaduser
+    sAMAccountType                       : 805306368
+    ScriptPath                           :
+    sDRightsEffective                    : 15
+    ServicePrincipalNames                : {}
+    SID                                  : S-1-5-21-1547265000-980589578-3749382528-1108
+    SIDHistory                           : {}
+    SmartcardLogonRequired               : False
+    State                                :
+    StreetAddress                        :
+    Surname                              :
+    Title                                :
+    TrustedForDelegation                 : False
+    TrustedToAuthForDelegation           : False
+    UseDESKeyOnly                        : False
+    userAccountControl                   : 512
+    userCertificate                      : {}
+    UserPrincipalName                    :
+    uSNChanged                           : 40993
+    uSNCreated                           : 40989
+    whenChanged                          : 15.12.2023 12:21:03
+    whenCreated                          : 15.12.2023 12:21:03
+    #>
+    ~~~
+
+    A User member of the organizational unit `TestOU`
+    ![Test OU AD User]("multimedia/images/testouaduser.JPG")
