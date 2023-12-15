@@ -1160,4 +1160,6 @@ Open the folder `Active Directory Users and Computers`
     ~~~
 
     A User member of the organizational unit `TestOU`
-    ![Test OU AD User]("multimedia/images/testouaduser.JPG")
+    ![Test OU AD User][testouaduser.JPG]
+
+[testouaduser.JPG]: "multimedia/images/testouaduser.JPG"
