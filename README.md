@@ -1,6 +1,5 @@
-![PowerShell]("multimedia/images/PowerShell.JPG")
-![PowerShell]("multimedia\images\PowerShell.JPG")
-![PowerShell]("multimedia.images.PowerShell.JPG")
+![PowerShell](./multimedia/images/PowerShell.JPG "Title")
+
 
 # Scripting
 You can use PoweShell scripts to streamline workflows by:
