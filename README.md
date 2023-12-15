@@ -1211,7 +1211,7 @@ Get-ADUser -Identity "nken" -Properties * | Select-Object DistinguishedName | Fo
 #DistinguishedName : CN=nken,OU=OUMoved,DC=ROOT,DC=LOCAL
 ~~~
 
-#### Administrate remotely running Computer Clients or Servers located in the same Network
+#### Administrate remotely running Computer Clients or Servers located under the same Domain
 
 Domain Controler Server: `WINSERVER2022DC`
 Remote Server: `WINSERVER2022M`
@@ -1220,12 +1220,19 @@ The Enable-PSRemoting cmdlet configures the computer to receive PowerShell remot
 
 PowerShell remoting is enabled by default on Windows Server platforms. You can use Enable-PSRemoting to enable PowerShell remoting on other supported versions of Windows and to re-enable remoting if it becomes disabled.
 
-Execute a command on a remote Windows Server named `WINSERVER2022M` 
+Execute a command on a remote Windows Server named `WINSERVER2022M` using a temporary session
 ~~~ps1
+# Execute a command on the remote server
 Invoke-Command -ComputerName WINSERVER2022M -ScriptBlock {$env:COMPUTERNAME}
 <# OUTPUT
 WINSERVER2022M
 #>
+
+# Execute a script on the remote server
+# Invoke-Command -ComputerName WINSERVER2022M -FilePath "C:\Path\To\Script.ps1"
+
+# Execute a command on many remote machines
+# Invoke-Command -ComputerName WINSERVER2022M, WINDOWS10C -ScriptBlock {$env:COMPUTERNAME}
 ~~~
 
 Enable PS Remoting on a Windows Client
@@ -1239,7 +1246,7 @@ The WinRM service has been started.
 #>
 ~~~
 
-Create a persistent connection to the remote Windows server named `WINSERVER2022M`
+Create a persistent connection/session to the remote Windows server named `WINSERVER2022M`
 ~~~ps1
 Enter-PSSession WINSERVER2022M
 <#
@@ -1248,7 +1255,7 @@ WINSERVER2022M
 #>
 ~~~
 
-Exit the session and Create again
+Exit the persistent session and Recreate it with the server full qualified name
 ~~~ps1
 [WINSERVER2022M]: PS C:\Users\Administrator.ROOT\Documents> Exit-PSSession
 PS C:\Users\Administrator> Enter-PSSession WINSERVER2022M.ROOT.LOCAL
