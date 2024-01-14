@@ -15,7 +15,7 @@ You can use PoweShell scripts to streamline workflows by:
 Note: I recommend you the PowerShell ISE (Integrated Scripting Environment) to write your scripts because it is built-in editor of Windows 10, 11 and it contains many features such as code completion, git integration.
 These features will enhance your productivity. 
 
-### Enable The Execution of Scripts on the system
+### Enable The Execution of Scripts on your computer
 
 Know the list of current execution policy of the system
 ~~~ps1
@@ -44,7 +44,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
 
 More details about the ExecutionPolicy [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-executionpolicy?view=powershell-7.3)
 
-### Use the winget tool to install and manage applications from PowerShell the command line
+### Use the winget tool to install and manage applications from PowerShell command line
 The Official Documentaion is [here](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
 
 Open the documentation of Winget command
@@ -83,10 +83,7 @@ The following options are available:
   --disable-interactivity   Disable interactive prompts
 ~~~
 
-Retrieve 
-
-
-### Set-Up Git Version Control System
+### Set-Up Git Version Control On your local computer
 
 Retrieve all available Git packages
 ~~~ps1
@@ -157,6 +154,7 @@ Logitech Onboard Memory Manager (LogitechOMM)                        Logitech.On
 #>
 ~~~
 
+Install Git
 ~~~ps1
 write-host "Install winget tool if you don't already have it, then type this command in command prompt or Powershell."
 
