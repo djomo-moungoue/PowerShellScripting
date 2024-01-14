@@ -10,7 +10,6 @@ You can use PoweShell scripts to streamline workflows by:
 - automating the configuration of your Google Cloud Platform
 - automating the configuration of your AWS Cloud Platform
 
-
 ## Set-Up PowerShell Environment
 
 Note: I recommend you the PowerShell ISE (Integrated Scripting Environment) to write your scripts because it is built-in editor of Windows 10, 11 and it contains many features such as code completion, git integration.
@@ -45,11 +44,129 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process
 
 More details about the ExecutionPolicy [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-executionpolicy?view=powershell-7.3)
 
+### Use the winget tool to install and manage applications from PowerShell the command line
+The Official Documentaion is [here](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
+
+Open the documentation of Winget command
+~~~ps1
+winget --help
+
+The winget command line utility enables installing applications and other packages from the command line.
+
+usage: winget  [<command>] [<options>]
+
+The following commands are available:
+  install    Installs the given package
+  show       Shows information about a package
+  source     Manage sources of packages
+  search     Find and show basic info of packages
+  list       Display installed packages
+  upgrade    Shows and performs available upgrades
+  uninstall  Uninstalls the given package
+  hash       Helper to hash installer files
+  validate   Validates a manifest file
+  settings   Open settings or set administrator settings
+  features   Shows the status of experimental features
+  export     Exports a list of the installed packages
+  import     Installs all the packages in a file
+  pin        Manage package pins
+  configure  Configures the system into a desired state
+  download   Downloads the installer from a given package
+
+The following options are available:
+  -v,--version              Display the version of the tool
+  --info                    Display general info of the tool
+  -?,--help                 Shows help about the selected command
+  --wait                    Prompts the user to press any key before exiting
+  --logs,--open-logs        Open the default logs location
+  --verbose,--verbose-logs  Enables verbose logging for winget
+  --disable-interactivity   Disable interactive prompts
+~~~
+
+Retrieve 
+
+
 ### Set-Up Git Version Control System
+
+Retrieve all available Git packages
+~~~ps1
+winget search --name git
+<# OUTPUT
+Name                                                                 Id                               Version      Source
+---------------------------------------------------------------------------------------------------------------------------
+GitFiend                                                             9NMNKLTSZNKC                     Unknown      msstore
+My Git                                                               9NLVK2SL2SSP                     Unknown      msstore
+GitIssuesReportGenerator                                             9N6SDTJ8754N                     Unknown      msstore
+GitVine                                                              9P3BLC2GW78W                     Unknown      msstore
+GitCup                                                               9NBLGGH4XFHP                     Unknown      msstore
+GitIt                                                                9NBLGGH40HV7                     Unknown      msstore
+Dev Home GitHub Extension (Preview)                                  9NZCC27PR6N6                     Unknown      msstore
+GitMind - Mind Map                                                   XPFMP3C8FNRG9P                   Unknown      msstore
+Bhagavad Gita                                                        9WZDNCRFJCV5                     Unknown      msstore
+GitLab CI/CD Tool                                                    9PK8QXP7H9DR                     Unknown      msstore
+GitLooker                                                            9PK6TGX9T87P                     Unknown      msstore
+GitLurker                                                            9N2MN78QLVKB                     Unknown      msstore
+GitMind Mind Map                                                     XP8LG65GV4C7C8                   Unknown      msstore
+Git                                                                  Git.Git                          2.43.0       winget
+GitNote                                                              zhaopengme.gitnote               3.1.0        winget
+Agent Git                                                            Xidicone.AgentGit                1.88         winget
+WimyGit                                                              Wimysoft.WimyGit                 1.0.1        winget
+git-absorb                                                           tummychow.git-absorb             0.6.10       winget
+TortoiseGit                                                          TortoiseGit.TortoiseGit          2.15.0.0     winget
+GitFiend                                                             TobySuggate.GitFiend             0.40.6       winget
+Snagit 2024                                                          TechSmith.Snagit.2024            24.0.4.1148  winget
+Snagit 2023                                                          TechSmith.Snagit.2023            23.2.2.636   winget
+Snagit 2022                                                          TechSmith.Snagit.2022            22.1.1.21427 winget
+Snagit 2021                                                          TechSmith.Snagit.2021            21.4.5.16756 winget
+Snagit 2020                                                          TechSmith.Snagit.2020            20.1.8.16558 winget
+gitui                                                                StephanDilly.gitui               0.24.3       winget
+GitHubReleaseNotes                                                   StefHeyenrath.GitHubReleaseNotes 1.0.8.0      winget
+Upgit                                                                pluveto.Upgit                    0.2.18       winget
+GitBlade                                                             PirinelLtd.GitBlade              00.00.8.9    winget
+Microsoft Git                                                        Microsoft.Git                    2.43.0.0.0   winget
+Gitify                                                               manosim.gitify                   4.5.1        winget
+Logitech Unifying Software                                           Logitech.UnifyingSoftware        2.52.33      winget
+Logitech Sync                                                        Logitech.Sync                    3.2.204.0    winget
+Logitech Solar App                                                   Logitech.Solar                   1.20.28      winget
+Logitech SetPoint                                                    Logitech.SetPoint                6.90.66      winget
+Logitech Presentation                                                Logitech.Presentation            1.60.33      winget
+Logitech Options                                                     Logitech.Options                 10.10.58     winget
+Logitech Gaming Software                                             Logitech.LGS                     9.04.28      winget
+Logitech G HUB                                                       Logitech.GHUB                    2023.10.3254 winget
+Logitech Camera Settings                                             Logitech.CameraSettings          2.12.8.0     winget
+WSJT-X Digital Modes for Weak Signal Communications in Amateur Radio K1JT.wsjtx                       2.6.1        winget
+lazygit                                                              JesseDuffield.lazygit            0.40.2       winget
+gitg                                                                 gnome.gitg                       41.0         winget
+GitLab Runner                                                        Gitlab.Runner                    16.7.0       winget
+GitKraken CLI                                                        GitKraken.cli                    1.4.0        winget
+Git LFS                                                              GitHub.GitLFS                    3.4.1        winget
+GitHub Desktop Beta                                                  GitHub.GitHubDesktop.Beta        3.1.3-beta3  winget
+GitHub Desktop                                                       GitHub.GitHubDesktop             3.3.5        winget
+GitHub CLI                                                           GitHub.cli                       2.42.0       winget
+Git Extensions                                                       GitExtensionsTeam.GitExtensions  4.2.1        winget
+GitAhead                                                             GitAhead.GitAhead                2.6.3        winget
+MinGit                                                               Git.MinGit                       2.41.0       winget
+Fork - a fast and friendly git client                                Fork.Fork                        1.91.2       winget
+FastGithub                                                           CoolPlayLin.FastGithub           2.1.4        winget
+GitKraken                                                            Axosoft.GitKraken                9.11.1       winget
+GitQL                                                                amrdeveloper.gitql               0.11.0       winget
+GitTools GitVersion                                                  GitTools.GitVersion              5.12.0       winget
+git-cola                                                             git-cola.git-cola                4.2.1        winget
+Git for Windows SDK                                                  Git.SDK                          1.0.8        winget
+Logitech Onboard Memory Manager (LogitechOMM)                        Logitech.OnboardMemoryManager    1.1.6805.0   winget
+#>
+~~~
 
 ~~~ps1
 write-host "Install winget tool if you don't already have it, then type this command in command prompt or Powershell."
-winget install --id Git.Git -e --source winget
+
+<# 
+Installs the selected package, either found by searching a configured source or directly from a manifest. By default, the query must case-insensitively match the id, name, or moniker of the package.
+--id                                 Filter results by id.
+-e,--exact                           Find package using exact match
+-s,--source                          Find package using the specified source.
+#>
+winget install --id Git.Git -exact --source winget
 
 Install-Module posh-git -Scope CurrentUser -Force
 Install-Module posh-git -Scope CurrentUser -Force
