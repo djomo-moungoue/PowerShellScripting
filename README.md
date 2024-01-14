@@ -190,7 +190,7 @@ See a discussion about this essue [here](https://github.com/dahlbyk/posh-git/iss
 
 If Git find a directory unsafe because the current user is not the owner, run this command if you known who owns that directory
 ~~~ps1
-git config --global --add safe.directory ${env:USERPROFILE}\PowerShellScripting
+git config --global --add safe.directory ${env:USERPROFILE}\PowerShellScriptingDM
 ~~~
 
 ## Important Notions
@@ -319,7 +319,7 @@ Last user enabled? True
 
 The Import-Csv command enable you to have a object identical to a PowerShell Object.
 ~~~ps1
-$UsersFromCsvObject = Import-csv -Path "${env:USERPROFILE}\PowerShellScripting\users.csv"
+$UsersFromCsvObject = Import-csv -Path "${env:USERPROFILE}\PowerShellScriptingDM\users.csv"
 $UsersFromCsvObject.GetType()
 $UsersFromCsvObject | Format-Table
 
@@ -353,7 +353,7 @@ Create a PowerShell script which will import these users locally.
 Clear-Host
 
 # Import the Csv file content as .Net object
-$NewPersonals = Import-Csv -Path "${env:USERPROFILE}\PowerShellScripting\new_personal.csv"
+$NewPersonals = Import-Csv -Path "${env:USERPROFILE}\PowerShellScriptingDM\new_personal.csv"
 $LocalUserNames = Get-LocalUser | Select-Object -ExpandProperty Name
 
 # Iterate through the list of users
@@ -1486,7 +1486,7 @@ Source folder ...
 Retrieve files from the source folder ...
 
 
-    Verzeichnis: C:\Users\admin\PowerShellScripting\backlog
+    Verzeichnis: C:\Users\admin\PowerShellScriptingDM\backlog
 
 
 Mode                 LastWriteTime         Length Name
@@ -1503,7 +1503,7 @@ Mode                 LastWriteTime         Length Name
 The destionation folder doesn't exist ...
 
 
-    Verzeichnis: C:\Users\admin\PowerShellScripting
+    Verzeichnis: C:\Users\admin\PowerShellScriptingDM
 
 
 Mode                 LastWriteTime         Length Name
@@ -1511,7 +1511,7 @@ Mode                 LastWriteTime         Length Name
 d-----        16.12.2023     00:04                _backup
 
 
-    Verzeichnis: C:\Users\admin\PowerShellScripting\_backup
+    Verzeichnis: C:\Users\admin\PowerShellScriptingDM\_backup
 
 
 Mode                 LastWriteTime         Length Name
@@ -1520,7 +1520,7 @@ Source folder ...
 Retrieve files from the source folder ...
 
 
-    Verzeichnis: C:\Users\admin\PowerShellScripting\backlog
+    Verzeichnis: C:\Users\admin\PowerShellScriptingDM\backlog
 
 
 Mode                 LastWriteTime         Length Name
@@ -1540,7 +1540,7 @@ Retrieve the content of all folders and subfolders
 To check visually if the script did the job./.
 
 
-    Verzeichnis: C:\Users\admin\PowerShellScripting\_backup
+    Verzeichnis: C:\Users\admin\PowerShellScriptingDM\_backup
 
 
 Mode                 LastWriteTime         Length Name
@@ -1550,7 +1550,7 @@ d-----        16.12.2023     00:04                images
 d-----        16.12.2023     00:04                texts
 
 
-    Verzeichnis: C:\Users\admin\PowerShellScripting\_backup\audios
+    Verzeichnis: C:\Users\admin\PowerShellScriptingDM\_backup\audios
 
 
 Mode                 LastWriteTime         Length Name
@@ -1559,7 +1559,7 @@ Mode                 LastWriteTime         Length Name
 -a----        15.12.2023     22:35              0 file8.mp3
 
 
-    Verzeichnis: C:\Users\admin\PowerShellScripting\_backup\images
+    Verzeichnis: C:\Users\admin\PowerShellScriptingDM\_backup\images
 
 
 Mode                 LastWriteTime         Length Name
@@ -1569,7 +1569,7 @@ Mode                 LastWriteTime         Length Name
 -a----        15.12.2023     22:35              0 file6.bmp
 
 
-    Verzeichnis: C:\Users\admin\PowerShellScripting\_backup\texts
+    Verzeichnis: C:\Users\admin\PowerShellScriptingDM\_backup\texts
 
 
 Mode                 LastWriteTime         Length Name
