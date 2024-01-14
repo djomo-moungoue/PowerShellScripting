@@ -85,6 +85,24 @@ The following options are available:
 Retrieve all available PackageName packages
 ~~~ps1
 winget search --name PackageName
+
+# Run Example
+winget search --name MongoDB # or mongodb it is case insensitive
+
+<# Output example
+Name                            Id                         Version  Source
+--------------------------------------------------------------------------
+MongoDB                          MongoDB.Server            6.0.6    winget
+NoSQLBooster for MongoDB         NoSQLBooster.NoSQLBooster 6.2.17   winget
+MongoDB Shell                    MongoDB.Shell             1.10.1   winget
+MongoDB CLI                      MongoDB.MongoDBCLI        1.30.0   winget
+MongoDB Atlas CLI                MongoDB.MongoDBAtlasCLI   1.5.1    winget
+MongoDB Tools                    MongoDB.DatabaseTools     100.7.3  winget
+MongoDB Compass Readonly         MongoDB.Compass.Readonly  1.41.0.0 winget
+MongoDB Compass Isolated Edition MongoDB.Compass.Isolated  1.41.0.0 winget
+MongoDB Compass                  MongoDB.Compass.Full      1.41.0.0 winget
+MongoDB Compass Community        MongoDB.Compass.Community 1.41.0   winget
+#>
 ~~~
 
 Install Apps with Winget
@@ -96,6 +114,9 @@ Installs the selected package, either found by searching a configured source or 
 -h, --silent	Runs the installer in silent mode. This suppresses all UI. The default experience shows installer progress.
 #>
 winget install --id AppsID --exact --source winget --silent
+
+# Run example
+winget install --id Git.Git --exact --source winget --silent
 ~~~
 
 ### [Set-Up Git Version Control On your local computer](https://github.com/djomo-moungoue/VersionControlAdministrationDM/tree/LearningByDoingDM?tab=readme-ov-file#set-up-git-version-control-in-powershell-command-line)
