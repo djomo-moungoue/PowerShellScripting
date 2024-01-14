@@ -82,6 +82,22 @@ The following options are available:
   --disable-interactivity   Disable interactive prompts
 ~~~
 
+Retrieve all available PackageName packages
+~~~ps1
+winget search --name PackageName
+~~~
+
+Install Apps with Winget
+~~~ps1
+Installs the selected package, either found by searching a configured source or directly from a manifest. By default, the query must case-insensitively match the id, name, or moniker of the package.
+--id                                 Filter results by id.
+-e,--exact                           Find package using exact match
+-s,--source                          Find package using the specified source.
+-h, --silent	Runs the installer in silent mode. This suppresses all UI. The default experience shows installer progress.
+#>
+winget install --id AppsID --exact --source winget --silent
+~~~
+
 ### [Set-Up Git Version Control On your local computer](https://github.com/djomo-moungoue/VersionControlAdministrationDM/tree/LearningByDoingDM?tab=readme-ov-file#set-up-git-version-control-in-powershell-command-line)
 
 ## Important Notions
