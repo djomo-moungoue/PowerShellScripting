@@ -1,8 +1,8 @@
-![PowerShell](./Images/PowerShell.JPG)
+![PowerShell](./images/PowerShell.JPG)
 
 Complete PowerShell Scripting Guide Tutorial
 
-![PowerShell Scripting Certificate Of Completion Udemy](./Images/PowerShellScriptingCertificateOfCompletionUdemy.jpg)
+![PowerShell Scripting Certificate Of Completion Udemy](./images/PowerShellScriptingCertificateOfCompletionUdemy.jpg)
 
 # Scripting
 You can use PoweShell scripts to streamline workflows by:
